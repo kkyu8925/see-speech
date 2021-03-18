@@ -30,6 +30,9 @@
 			width: 200px;
 			font-weight: bold;
 		}
+		.historybutton {
+			width:200px;
+		}
 	</style>
 </head>
 
@@ -68,7 +71,7 @@
                                         <nav>
                                             <ul id="navigation">                                                                                          
                                                 <li class="active" ><a href="index.html">Home</a></li>
-                                                <li class="active" ><a href="#">내정보</a></li>
+                                                <li class="active" ><a href="#">내 정보</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header"><a href="#" class="btn btn3">Log in</a></li>
                                             </ul>
@@ -268,8 +271,8 @@
 				</div>
 
 				<div id="table_button_box">
-					<a href="#" class="genric-btn success radius">연습하기</a>
-					<a href="index.html" class="genric-btn default radius">홈으로</a>
+					<a href="#" class="genric-btn success radius">랜덤으로 연습하기</a>
+					<button class="genric-btn default radius historybutton" onclick="history.back()">이전으로</button>
 				</div>
 
 			</div>
