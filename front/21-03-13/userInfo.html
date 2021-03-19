@@ -20,6 +20,30 @@
 	<link rel="stylesheet" href="assets/css/slick.css">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<style>
+		.form__button {
+			font-weight: bold;
+		}
+		.delete_userButton {
+			color:#f44a40;
+			border-color: #f44a40;
+		}
+		.delete_userButton:hover, .delete_userButton:focus {
+			background-color: #f44a40;
+			border-color:#f44a40;
+			color:white;	
+		}
+		.update_pwButton {
+			color:#4cd3e3;
+			border-color:#4cd3e3;
+		}
+		.update_pwButton:hover, .update_pwButton:focus {
+			background-color: #4cd3e3;
+			border-color:#4cd3e3;
+			color:white;
+		}
+
+	</style>
 </head>
 
 <body>
@@ -56,9 +80,9 @@
                                         <nav>
                                             <ul id="navigation">                                                                                          
                                                 <li class="active" ><a href="index.html">Home</a></li>
-                                                <li class="active" ><a href="#">내 정보</a></li>
+                                                <li class="active" ><a href="userInfo.html">내 정보</a></li>
                                                 <!-- Button -->
-                                                <li class="button-header"><a href="#" class="btn btn3">Log in</a></li>
+                                                <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -95,103 +119,90 @@
 			</div>
 		</section>
 
-								<!--? Start form Area -->
-								<div class="whole-wrap">
-									<div class="container box_1170">
-										<div class="section-top-border">
-											<div class="row">
-												<div class="col-lg-8 col-md-8">
-													<h3 class="mb-30">내 정보</h3>
-													<form action="#">
-														<div class="mt-10">
-															<input type="text" name="" placeholder="ID"
-															onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'" required
-															class="single-input">
-														</div>
-														<div class="mt-10">
-															<input type="password" name="" placeholder="PW"
-															onfocus="this.placeholder = ''" onblur="this.placeholder = 'PW'" required
-															class="single-input">
-														</div>
-														<div class="mt-10">
-															<input type="email" name="" placeholder="EMAIL"
-															onfocus="this.placeholder = ''" onblur="this.placeholder = 'EMAIL'" required
-															class="single-input">
-														</div>
-														
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- End Align Area -->
-							</main>
-							<footer>
-								<div class="footer-wrappper footer-bg">
-								   <!-- footer-bottom area -->
-								   <div class="footer-bottom-area">
-									   <div class="container">
-										   <div class="footer-border">
-											   <div class="row d-flex align-items-center">
-												   <div class="col-xl-12 ">
-													   <div class="footer-copy-right text-center">
-														   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-															 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-															 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-														 </div>
-													 </div>
-												 </div>
-											 </div>
-										 </div>
-									 </div>
-									 <!-- Footer End-->
+		<!--? Start form Area -->
+		<div class="whole-wrap">
+			<div class="container box_1170">
+				<div class="section-top-border">
+					<div class="row">
+						<div class="col-lg-8 col-md-8">
+							<h3 class="mb-30">내 정보</h3>
+								
+								
+
+								<button type="submit" class="boxed-btn form__button update_pwButton">암호수정</button>
+								<button type="submit" class="boxed-btn form__button delete_userButton">계정삭제</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Align Area -->
+	</main>
+	<footer>
+		<div class="footer-wrappper footer-bg">
+		   <!-- footer-bottom area -->
+		   <div class="footer-bottom-area">
+			   <div class="container">
+				   <div class="footer-border">
+					   <div class="row d-flex align-items-center">
+						   <div class="col-xl-12 ">
+							   <div class="footer-copy-right text-center">
+								   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+									 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 								 </div>
-							 </footer> 
-								<!-- Scroll Up -->
-								<div id="back-top" >
-									<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-								</div>
-								<!-- JS here -->
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+			 <!-- Footer End-->
+		 </div>
+	</footer> 
+	<!-- Scroll Up -->
+	<div id="back-top" >
+		<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+	</div>
+	<!-- JS here -->
+	<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+	<!-- Jquery, Popper, Bootstrap -->
+	<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="./assets/js/popper.min.js"></script>
+	<script src="./assets/js/bootstrap.min.js"></script>
+	<!-- Jquery Mobile Menu -->
+	<script src="./assets/js/jquery.slicknav.min.js"></script>
 
-								<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-								<!-- Jquery, Popper, Bootstrap -->
-								<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-								<script src="./assets/js/popper.min.js"></script>
-								<script src="./assets/js/bootstrap.min.js"></script>
-								<!-- Jquery Mobile Menu -->
-								<script src="./assets/js/jquery.slicknav.min.js"></script>
+	<!-- Jquery Slick , Owl-Carousel Plugins -->
+	<script src="./assets/js/owl.carousel.min.js"></script>
+	<script src="./assets/js/slick.min.js"></script>
+	<!-- One Page, Animated-HeadLin -->
+	<script src="./assets/js/wow.min.js"></script>
+	<script src="./assets/js/animated.headline.js"></script>
+	<script src="./assets/js/jquery.magnific-popup.js"></script>
 
-								<!-- Jquery Slick , Owl-Carousel Plugins -->
-								<script src="./assets/js/owl.carousel.min.js"></script>
-								<script src="./assets/js/slick.min.js"></script>
-								<!-- One Page, Animated-HeadLin -->
-								<script src="./assets/js/wow.min.js"></script>
-								<script src="./assets/js/animated.headline.js"></script>
-								<script src="./assets/js/jquery.magnific-popup.js"></script>
-
-								<!-- Date Picker -->
-								<script src="./assets/js/gijgo.min.js"></script>
-								<!-- Nice-select, sticky -->
-								<script src="./assets/js/jquery.nice-select.min.js"></script>
-								<script src="./assets/js/jquery.sticky.js"></script>
+	<!-- Date Picker -->
+	<script src="./assets/js/gijgo.min.js"></script>
+	<!-- Nice-select, sticky -->
+	<script src="./assets/js/jquery.nice-select.min.js"></script>
+	<script src="./assets/js/jquery.sticky.js"></script>
 								
-								<!-- counter , waypoint,Hover Direction -->
-								<script src="./assets/js/jquery.counterup.min.js"></script>
-								<script src="./assets/js/waypoints.min.js"></script>
-								<script src="./assets/js/jquery.countdown.min.js"></script>
-								<script src="./assets/js/hover-direction-snake.min.js"></script>
+	<!-- counter , waypoint,Hover Direction -->
+	<script src="./assets/js/jquery.counterup.min.js"></script>
+	<script src="./assets/js/waypoints.min.js"></script>
+	<script src="./assets/js/jquery.countdown.min.js"></script>
+	<script src="./assets/js/hover-direction-snake.min.js"></script>
 
-								<!-- contact js -->
-								<script src="./assets/js/contact.js"></script>
-								<script src="./assets/js/jquery.form.js"></script>
-								<script src="./assets/js/jquery.validate.min.js"></script>
-								<script src="./assets/js/mail-script.js"></script>
-								<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+	<!-- contact js -->
+	<script src="./assets/js/contact.js"></script>
+	<script src="./assets/js/jquery.form.js"></script>
+	<script src="./assets/js/jquery.validate.min.js"></script>
+	<script src="./assets/js/mail-script.js"></script>
+	<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 								
-								<!-- Jquery Plugins, main Jquery -->	
-								<script src="./assets/js/plugins.js"></script>
-								<script src="./assets/js/main.js"></script>
+	<!-- Jquery Plugins, main Jquery -->	
+	<script src="./assets/js/plugins.js"></script>
+	<script src="./assets/js/main.js"></script>
 								
-							</body>
-							</html>
+</body>
+</html>

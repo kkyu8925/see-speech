@@ -26,14 +26,65 @@
    		 	justify-content: space-around;
 			padding-bottom: 50px;
 		}
-		#table_button_box a {
-			width: 200px;
+		#table_button_box button {
 			font-weight: bold;
 		}
-		.historybutton {
-			width:200px;
+		.histroy_button {
+			color:#1f2b7b;
+			border-color: #1f2b7b;
+		}
+		.histroy_button:hover,.histroy_button:focus {
+			background-color: #1f2b7b;
+			border-color:#1f2b7b;
+			color:white;
+		}
+		.practice_button{
+			color:#4cd3e3;
+			border-color: #4cd3e3;
+		}
+		.practice_button:hover,.practice_button:focus{
+			background-color:#4cd3e3;
+			border-color: #4cd3e3;
+			color:white;
+		}
+		.delete_button{
+			color:#f44a40;
+			border-color: #f44a40;
+		}
+		.delete_button:hover,.delete_button:focus{
+			background-color:#f44a40;
+			border-color: #f44a40;
+			color:white;
+		}
+
+		.nav_box {
+			margin-top:0;
+			padding-bottom:30px;
+		}
+		.page-link:focus{
+			background-color: #fbf9ff;
+		}
+		.list_button {
+			height: 40px;
+			width:70px;
+			text-align:center;
+			padding:0px;
+		}
+		.update_button {
+			margin-right: 30px;
+		}
+		.table-row {
+			cursor: pointer;
+		}
+		.table-row:hover{
+			background-color: bisque;
 		}
 	</style>
+	<script>
+		function onePracticeHadler() {
+			confirm("학습하겠습니까?")
+		}
+	</script>
 </head>
 
 <body>
@@ -71,9 +122,9 @@
                                         <nav>
                                             <ul id="navigation">                                                                                          
                                                 <li class="active" ><a href="index.html">Home</a></li>
-                                                <li class="active" ><a href="#">내 정보</a></li>
+                                                <li class="active" ><a href="userInfo.html">내 정보</a></li>
                                                 <!-- Button -->
-                                                <li class="button-header"><a href="#" class="btn btn3">Log in</a></li>
+                                                <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -114,165 +165,146 @@
 		<div class="whole-wrap">
 			<div class="container box_1170">
 				<div class="section-top-border">
-					<h3 class="mb-30">Table</h3>
+					<h3 class="mb-30">제목</h3>
 					<div class="progress-table-wrap">
-						<div class="progress-table">
+						<div class="progress-table" style="padding-bottom: 15px;">
 							<div class="table-head">
 								<div class="serial">#</div>
-								<div class="country">Countries</div>
-								<div class="visit">Visits</div>
-								<div class="percentage">Percentages</div>
+								<div class="country">문제</div>
+								<div class="percentage">Button</div>
 							</div>
 							<div class="table-row">
 								<div class="serial">01</div>
-								<div class="country"> <img src="assets/img/elements/f1.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-1" role="progressbar" style="width: 80%"
-										aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">02</div>
-								<div class="country"> <img src="assets/img/elements/f2.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-2" role="progressbar" style="width: 30%"
-										aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">03</div>
-								<div class="country"> <img src="assets/img/elements/f3.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-3" role="progressbar" style="width: 55%"
-										aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">04</div>
-								<div class="country"> <img src="assets/img/elements/f4.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-4" role="progressbar" style="width: 60%"
-										aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">05</div>
-								<div class="country"> <img src="assets/img/elements/f5.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-5" role="progressbar" style="width: 40%"
-										aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">06</div>
-								<div class="country"> <img src="assets/img/elements/f6.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-6" role="progressbar" style="width: 70%"
-										aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">07</div>
-								<div class="country"> <img src="assets/img/elements/f7.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-7" role="progressbar" style="width: 30%"
-										aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">08</div>
-								<div class="country"> <img src="assets/img/elements/f8.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-8" role="progressbar" style="width: 60%"
-										aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">04</div>
-								<div class="country"> <img src="assets/img/elements/f4.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-4" role="progressbar" style="width: 60%"
-										aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">05</div>
-								<div class="country"> <img src="assets/img/elements/f5.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-5" role="progressbar" style="width: 40%"
-										aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">06</div>
-								<div class="country"> <img src="assets/img/elements/f6.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-6" role="progressbar" style="width: 70%"
-										aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">07</div>
-								<div class="country"> <img src="assets/img/elements/f7.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-7" role="progressbar" style="width: 30%"
-										aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">08</div>
-								<div class="country"> <img src="assets/img/elements/f8.jpg" alt="flag">Canada</div>
-								<div class="visit">645032</div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="progress-bar color-8" role="progressbar" style="width: 60%"
-										aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
+								<div class="serial">01</div>
+								<div class="country" onclick="onePracticeHadler()">Canada</div>
+								<div class="percentage ">
+									<button class="boxed-btn list_button update_button">수정</button>
+									<button class="boxed-btn list_button delete_button">삭제</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
+				<nav class="blog-pagination justify-content-center d-flex nav_box">
+					<ul class="pagination">
+						<li class="page-item">
+							<a href="#" class="page-link" aria-label="Previous">
+								<i class="ti-angle-left"></i>
+							</a>
+						</li>
+						<li class="page-item">
+							<a href="#" class="page-link">1</a>
+						</li>
+						<li class="page-item active">
+							<a href="#" class="page-link">2</a>
+						</li>
+						<li class="page-item">
+							<a href="#" class="page-link" aria-label="Next">
+								<i class="ti-angle-right"></i>
+							</a>
+						</li>
+					</ul>
+				</nav>
+
 				<div id="table_button_box">
-					<a href="#" class="genric-btn success radius">랜덤으로 연습하기</a>
-					<button class="genric-btn default radius historybutton" onclick="history.back()">이전으로</button>
+					<button type="submit" class="boxed-btn practice_button">랜덤학습</button>
+					<button type="submit" class="boxed-btn histroy_button" onclick="history.back()">이전으로</button>
 				</div>
 
 			</div>
@@ -301,50 +333,50 @@
 		</div>
 	 </footer> 
 	 
-								<!-- Scroll Up -->
-								<div id="back-top" >
-									<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-								</div>
-								<!-- JS here -->
+	<!-- Scroll Up -->
+	<div id="back-top" >
+		<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+	</div>
+	<!-- JS here -->
 
-								<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-								<!-- Jquery, Popper, Bootstrap -->
-								<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-								<script src="./assets/js/popper.min.js"></script>
-								<script src="./assets/js/bootstrap.min.js"></script>
-								<!-- Jquery Mobile Menu -->
-								<script src="./assets/js/jquery.slicknav.min.js"></script>
+	<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+	<!-- Jquery, Popper, Bootstrap -->
+	<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="./assets/js/popper.min.js"></script>
+	<script src="./assets/js/bootstrap.min.js"></script>
+	<!-- Jquery Mobile Menu -->
+	<script src="./assets/js/jquery.slicknav.min.js"></script>
 
-								<!-- Jquery Slick , Owl-Carousel Plugins -->
-								<script src="./assets/js/owl.carousel.min.js"></script>
-								<script src="./assets/js/slick.min.js"></script>
-								<!-- One Page, Animated-HeadLin -->
-								<script src="./assets/js/wow.min.js"></script>
-								<script src="./assets/js/animated.headline.js"></script>
-								<script src="./assets/js/jquery.magnific-popup.js"></script>
+	<!-- Jquery Slick , Owl-Carousel Plugins -->
+	<script src="./assets/js/owl.carousel.min.js"></script>
+	<script src="./assets/js/slick.min.js"></script>
+	<!-- One Page, Animated-HeadLin -->
+	<script src="./assets/js/wow.min.js"></script>
+	<script src="./assets/js/animated.headline.js"></script>
+	<script src="./assets/js/jquery.magnific-popup.js"></script>
 
-								<!-- Date Picker -->
-								<script src="./assets/js/gijgo.min.js"></script>
-								<!-- Nice-select, sticky -->
-								<script src="./assets/js/jquery.nice-select.min.js"></script>
-								<script src="./assets/js/jquery.sticky.js"></script>
+	<!-- Date Picker -->
+	<script src="./assets/js/gijgo.min.js"></script>
+	<!-- Nice-select, sticky -->
+	<script src="./assets/js/jquery.nice-select.min.js"></script>
+	<script src="./assets/js/jquery.sticky.js"></script>
 								
-								<!-- counter , waypoint,Hover Direction -->
-								<script src="./assets/js/jquery.counterup.min.js"></script>
-								<script src="./assets/js/waypoints.min.js"></script>
-								<script src="./assets/js/jquery.countdown.min.js"></script>
-								<script src="./assets/js/hover-direction-snake.min.js"></script>
+	<!-- counter , waypoint,Hover Direction -->
+	<script src="./assets/js/jquery.counterup.min.js"></script>
+	<script src="./assets/js/waypoints.min.js"></script>
+	<script src="./assets/js/jquery.countdown.min.js"></script>
+	<script src="./assets/js/hover-direction-snake.min.js"></script>
 
-								<!-- contact js -->
-								<script src="./assets/js/contact.js"></script>
-								<script src="./assets/js/jquery.form.js"></script>
-								<script src="./assets/js/jquery.validate.min.js"></script>
-								<script src="./assets/js/mail-script.js"></script>
-								<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+	<!-- contact js -->
+	<script src="./assets/js/contact.js"></script>
+	<script src="./assets/js/jquery.form.js"></script>
+	<script src="./assets/js/jquery.validate.min.js"></script>
+	<script src="./assets/js/mail-script.js"></script>
+	<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 								
-								<!-- Jquery Plugins, main Jquery -->	
-								<script src="./assets/js/plugins.js"></script>
-								<script src="./assets/js/main.js"></script>
+	<!-- Jquery Plugins, main Jquery -->	
+	<script src="./assets/js/plugins.js"></script>
+	<script src="./assets/js/main.js"></script>
 								
 </body>
 </html>
