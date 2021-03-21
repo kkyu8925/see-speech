@@ -42,6 +42,22 @@
 			border-color:#4cd3e3;
 			color:white;
 		}
+		.delete_image_button {
+			position: absolute;
+			top: 35px;
+			right: 25px;
+			color: white;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		.image_top_box {
+			display: flex;
+			justify-content: space-between;
+		}
+		.userInfo_buttonBox {
+			display: flex;
+			justify-content: space-between;
+		}
 
 	</style>
 </head>
@@ -80,7 +96,7 @@
                                         <nav>
                                             <ul id="navigation">                                                                                          
                                                 <li class="active" ><a href="index.html">Home</a></li>
-                                                <li class="active" ><a href="userInfo.html">내 정보</a></li>
+                                                <li class="active" ><a href="userInfo.html">User</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
                                             </ul>
@@ -125,64 +141,76 @@
 				<div class="section-top-border">
 					<div class="row">
 						<div class="col-lg-8 col-md-8">
-							<h3 class="mb-30">내 정보</h3>
-								
-								
-
+							<h3 class="mb-30">User</h3>
+							<blockquote class="generic-blockquote">
+								Email@email.com
+							</blockquote>
+							<div class="userInfo_buttonBox">
 								<button type="submit" class="boxed-btn form__button update_pwButton">암호수정</button>
 								<button type="submit" class="boxed-btn form__button delete_userButton">계정삭제</button>
-
+							</div>								
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="container box_1170">
+			<!-- <div class="container box_1170">
 				<div class="section-top-border">
-					<h3>Image Gallery</h3>
+					<div class="image_top_box">
+						<h3>Image Gallery</h3>
+						<button class="boxed-btn" style="font-weight: bold;">추가</button>
+					</div>
 					<div class="row gallery-item">
 						<div class="col-md-4">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g1.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g1.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-4">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g2.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g2.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-4">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g3.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g3.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-6">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g4.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g4.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-6">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g5.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g5.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-4">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g6.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g6.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-4">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g7.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g7.jpg);"></div>
 							</a>
 						</div>
 						<div class="col-md-4">
+							<div class="delete_image_button">X</div>
 							<a href="assets/img/elements/g8.jpg" class="img-pop-up">
 								<div class="single-gallery-image" style="background: url(assets/img/elements/g8.jpg);"></div>
 							</a>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<!-- End Align Area -->
 		
