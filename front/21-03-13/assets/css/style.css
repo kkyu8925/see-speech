@@ -5421,7 +5421,7 @@ del {
 .progress-table {
   background: #f9f9ff;
   padding: 15px 0px 30px 0px;
-  min-width: 800px;
+  min-width: 600px;
 }
 .progress-table .serial {
   width: 10%;
