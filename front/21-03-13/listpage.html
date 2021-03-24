@@ -82,7 +82,12 @@
 	</style>
 	<script>
 		function onePracticeHadler() {
-			confirm("학습하겠습니까?")
+			let isConfirm = confirm("개별 학습하겠습니까?");
+			if(isConfirm) {
+				location.href="play.html";
+			} else {
+
+			}
 		}
 	</script>
 </head>

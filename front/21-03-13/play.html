@@ -20,47 +20,26 @@
 	<link rel="stylesheet" href="assets/css/slick.css">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+
 	<style>
-		.form__button {
-			font-weight: bold;
+		.button_container {
+			display: flex;
+			justify-content: space-between;
 		}
-		.delete_userButton {
-			color:#f44a40;
-			border-color: #f44a40;
+		.play_button {
+			width:47%;
 		}
-		.delete_userButton:hover, .delete_userButton:focus {
-			background-color: #f44a40;
-			border-color:#f44a40;
-			color:white;	
-		}
-		.update_pwButton {
+		.next_button {
+			border-color:#4cd3e3;
 			color:#4cd3e3;
-			border-color:#4cd3e3;
 		}
-		.update_pwButton:hover, .update_pwButton:focus {
+		.next_button:hover, .next_button:focus {
 			background-color: #4cd3e3;
-			border-color:#4cd3e3;
+			border-color: #4cd3e3;
 			color:white;
 		}
-		.delete_image_button {
-			position: absolute;
-			top: 35px;
-			right: 25px;
-			color: white;
-			font-weight: bold;
-			cursor: pointer;
-		}
-		.image_top_box {
-			display: flex;
-			justify-content: space-between;
-		}
-		.userInfo_buttonBox {
-			display: flex;
-			justify-content: space-between;
-			padding-top: 10px;
-		}
-
 	</style>
+
 </head>
 
 <body>
@@ -118,6 +97,7 @@
     </header>
 	
 	<main>
+
 		<!--? slider Area Start-->
 		<section class="slider-area slider-area2">
 			<div class="slider-active">
@@ -135,86 +115,43 @@
 				</div>
 			</div>
 		</section>
-
-		<!--? Start form Area -->
-		<div class="whole-wrap">
-			<div class="container box_1170">
-				<div class="section-top-border">
-					<div class="row">
-						<div class="col-lg-8 col-md-8">
-							<h3 class="mb-30">User</h3>
-							<blockquote class="generic-blockquote">
-								Email@email.com
-							</blockquote>
-							<div class="userInfo_buttonBox">
-								<button type="submit" class="boxed-btn form__button update_pwButton">암호수정</button>
-								<button type="submit" class="boxed-btn form__button delete_userButton">계정삭제</button>
-							</div>								
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- <div class="container box_1170">
-				<div class="section-top-border">
-					<div class="image_top_box">
-						<h3>Image Gallery</h3>
-						<button class="boxed-btn" style="font-weight: bold;">추가</button>
-					</div>
-					<div class="row gallery-item">
-						<div class="col-md-4">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g1.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g1.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-4">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g2.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g2.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-4">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g3.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g3.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-6">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g4.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g4.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-6">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g5.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g5.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-4">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g6.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g6.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-4">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g7.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g7.jpg);"></div>
-							</a>
-						</div>
-						<div class="col-md-4">
-							<div class="delete_image_button">X</div>
-							<a href="assets/img/elements/g8.jpg" class="img-pop-up">
-								<div class="single-gallery-image" style="background: url(assets/img/elements/g8.jpg);"></div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div> -->
-		</div>
-		<!-- End Align Area -->
 		
+
+		 <!-- ? services-area -->
+		 <div class="services-area services-area2 section-padding40">
+            <div class="container">
+
+                <div class="row justify-content-sm-center">
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-caption">
+                                <h3>Speech</h3>
+								<p>밥 맛있게 먹었어!!!!!!!!!</p>
+                                <p>"밤 마시께 머거써"</p>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="row justify-content-sm-center">
+					<div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-caption">
+                                <h3>See</h3>
+                                <p>가 나다라 마바사</p>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="row justify-content-sm-center">
+					<div class="col-lg-4 col-md-6 col-sm-8 button_container">
+						<button class="boxed-btn play_button next_button">Next</button>
+						<button class="boxed-btn play_button" onclick="history.back()">Back</button>
+					</div>
+				</div>
+
+            </div>
+        </div>
+	
 	</main>
 	<footer>
 		<div class="footer-wrappper footer-bg">

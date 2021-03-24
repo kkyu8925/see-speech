@@ -2394,7 +2394,7 @@ hr {
 }
 .mobile_menu .slicknav_menu .slicknav_nav {
   margin-top: 9px !important;
-  background: #c86fff;
+  background: border-box;
 }
 .mobile_menu .slicknav_menu .slicknav_nav a:hover {
   background: transparent;
