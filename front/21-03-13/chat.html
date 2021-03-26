@@ -25,6 +25,35 @@
 	<link rel="stylesheet" type="text/css" href="assets/chatcss/core.css">
 	<link rel="stylesheet" type="text/css" href="assets/chatcss/style.css">
 
+	<style>
+		.chat_head_box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.chat_head_box i {
+			padding-right: 20px;
+		}
+	</style>
+
+	<!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function () {
+
+			// nav 효과
+			$(".slicknav_btn").click(function(){
+				let isHasClass = $(".slicknav_nav").hasClass("slicknav_hidden");
+				if(!isHasClass) {
+					$(".hero__caption").hide();
+				} else {
+					$(".hero__caption").show();
+				}
+			})
+			
+		})
+    </script>
+
 </head>
 
 <body>
@@ -98,8 +127,8 @@
 			</div>
 		</section>
 
-    	<div class="main-container" style="padding: 50px 75px;">
-			<div class="pd-ltr-20 xs-pd-20-10" style="padding-bottom: 0;">
+    	<div class="main-container" style="padding-top: 0;">
+			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
 					<div class="bg-white border-radius-4 box-shadow mb-30">
 						<div class="row no-gutters">
@@ -108,10 +137,8 @@
 									<div class="chat-profile-header clearfix">
 										<div class="left">
 											<div class="clearfix">
-												<div class="chat-profile-photo">
-													<img src="assets/img/chat/sim.png" alt="">
-												</div>
-												<div class="chat-profile-name">
+												<div class="chat-profile-name chat_head_box">
+													<i class="fas fa-angle-left fa-2x" style="cursor: pointer;" onclick="history.back()"></i>
 													<h3>심심이</h3>
 												</div>
 											</div>
@@ -159,7 +186,7 @@
 											</ul>
 										</div>
 										<div class="chat-footer">
-											
+											<i class="fas fa-microphone-alt"></i>
 										</div>
 									</div>
 								</div>
@@ -167,7 +194,7 @@
 						</div>
 					</div>
 				</div>
-			<!-- </div> -->
+			</div>
 		</div>
 
 	</main>

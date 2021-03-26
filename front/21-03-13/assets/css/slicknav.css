@@ -64,6 +64,7 @@
 }
 .slicknav_nav li {
   display: block;
+  padding-bottom: 10px;
 }
 .slicknav_nav .slicknav_arrow {
   font-size: 0.8em;

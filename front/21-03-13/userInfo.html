@@ -61,6 +61,23 @@
 		}
 
 	</style>
+	<!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function () {
+
+			// nav 효과
+			$(".slicknav_btn").click(function(){
+				let isHasClass = $(".slicknav_nav").hasClass("slicknav_hidden");
+				if(!isHasClass) {
+					$(".hero__caption").hide();
+				} else {
+					$(".hero__caption").show();
+				}
+			})
+			
+		})
+    </script>
 </head>
 
 <body>
