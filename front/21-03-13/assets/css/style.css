@@ -3354,9 +3354,6 @@ hr {
 .team-active button.slick-next {
   right: -58px;
 }
-.team-active button.slick-next i {
-  color: #ddd;
-}
 .courses-area .properties {
   margin: 0 15px;
 }
@@ -3474,14 +3471,8 @@ hr {
 .courses-actives button.slick-prev {
   left: -58px;
 }
-.courses-actives button.slick-prev i {
-  color: #ddd;
-}
 .courses-actives button.slick-next {
   right: -58px;
-}
-.courses-actives button.slick-next i {
-  color: #ddd;
 }
 .single-features {
   display: flex;
