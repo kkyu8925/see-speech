@@ -384,17 +384,6 @@ $('.courses-actives').slick({
       $(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
       });
 
-
-/* 10. WOW active */
-    new WOW().init();
-
-// 11. ---- Mailchimp js --------//  
-    function mailChimp() {
-      $('#mc_embed_signup').find('form').ajaxChimp();
-    }
-    mailChimp();
-
-
 // 12 Pop Up Img
     var popUp = $('.single_gallery_part, .img-pop-up');
       if(popUp.length){
@@ -414,16 +403,10 @@ $('.courses-actives').slick({
     }
 
 /* 13. counterUp*/
-    $('.counter').counterUp({
-      delay: 10,
-      time: 3000
-    });
-
-/* 14. Datepicker */
-  $('#datepicker1').datepicker();
-
-// 15. Time Picker
-  $('#timepicker').timepicker();
+    // $('.counter').counterUp({
+    //   delay: 10,
+    //   time: 3000
+    // });
 
 //16. Overlay
   $(".snake").snakeify({
