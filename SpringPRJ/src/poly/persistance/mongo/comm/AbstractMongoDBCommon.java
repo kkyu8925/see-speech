@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.mongodb.client.model.Indexes;
 
-public abstract class AbstractMongoDBComon {
+public abstract class AbstractMongoDBCommon {
 
     // 로그 파일 생성 및 로그 출력을 위한 log4j 프레임워크의 자바 객체
     private final Logger log = Logger.getLogger(this.getClass());
