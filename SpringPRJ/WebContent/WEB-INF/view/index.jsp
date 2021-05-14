@@ -28,7 +28,7 @@
         }
 
         .apiButton {
-            margin-bottom: 0px;
+            margin-bottom: 0;
         }
 
         .apiButton:hover {
@@ -38,79 +38,18 @@
 </head>
 
 <body>
-<!-- ? Preloader Start -->
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="${pageContext.request.contextPath}/resources/img/logo/loder.png" alt="">
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Preloader Start -->
+<%@include file="/WEB-INF/view/inc/preloader.jsp" %>
 <!-- Preloader end -->
 
-<header>
-    <!-- Header Start -->
-    <div class="header-area header-transparent">
-        <div class="main-header ">
-            <div class="header-bottom  header-sticky">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <!-- Logo -->
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="logo">
-                                <a href="index.do"><img
-                                        src="${pageContext.request.contextPath}/resources/img/logo/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10">
-                            <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                                <!-- Main-menu -->
-                                <div class="main-menu d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li class="active"><a href="index.do">Home</a></li>
-                                            <li class="active"><a href="user.do">User</a></li>
-                                            <!-- Button -->
-                                            <li class="button-header"><a href="login.do" class="btn btn3">Log in</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-</header>
+<!-- header start -->
+<%@include file="/WEB-INF/view/inc/header.jsp" %>
+<!-- header end -->
 
 <main>
-    <!--? slider Area Start-->
-    <section class="slider-area slider-area2">
-        <div class="slider-active">
-            <!-- Single Slider -->
-            <div class="single-slider slider-height2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-11 col-md-12">
-                            <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">See & Speech</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- slider Area Start-->
+    <%@include file="/WEB-INF/view/inc/section.jsp" %>
+    <!-- slider Area end-->
 
     <!-- 단어 학습하기 start -->
     <!-- Courses area start -->
@@ -142,9 +81,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -168,9 +105,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -194,9 +129,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -220,9 +153,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -264,9 +195,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -290,9 +219,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -316,9 +243,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -342,9 +267,7 @@
                                         <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
-
                             </div>
-
                             <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -357,7 +280,7 @@
     <!-- 문장 학습하기 end -->
 
     <!--? top subjects Area Start -->
-    <div class="topic-area section-padding40" style="padding-top: 0px; padding-bottom:50px">
+    <div class="topic-area section-padding40" style="padding-top: 0; padding-bottom:50px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">
@@ -367,7 +290,6 @@
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
                     <div class="single-topic text-center mb-30">
                         <div class="topic-img">
@@ -488,53 +410,25 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-30">
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="single-services mb-30 cursor_pointer apiButton" onclick="location.href='chat.do'">
                         <div class="features-icon">
-                            <img src="/resources/img/icon/icon1.svg" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/img/icon/icon1.svg" alt="">
                         </div>
                         <div class="features-caption">
-                            <h3>심심이랑 연습하기</h3>
-                            <p>The automated process all your website tasks.</p>
-                        </div>
-                    </div>
-                </div> -->
-
-            </div>
-        </div>
-    </div>
-
-</main>
-<footer>
-    <div class="footer-wrappper footer-bg">
-        <!-- footer-bottom area -->
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-xl-12 ">
-                            <div class="footer-copy-right text-center">
-                                <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                    All rights reserved | This template is made with <i class="fa fa-heart"
-                                                                                        aria-hidden="true"></i> by <a
-                                        href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                </p>
-                            </div>
+                            <h3>단체 채팅하기</h3>
+                            <p>당신의 실력을 보여주세요!</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Footer End-->
     </div>
-</footer>
-<!-- Scroll Up -->
-<div id="back-top">
-    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-</div>
+</main>
+
+<!-- footer&Scroll Up start -->
+<%@include file="/WEB-INF/view/inc/footer.jsp" %>
+<!-- footer&Scroll Up end -->
 
 <!-- JS here -->
 <script src="${pageContext.request.contextPath}/resources/js/vendor/modernizr-3.5.0.min.js"></script>

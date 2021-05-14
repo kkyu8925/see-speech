@@ -36,7 +36,7 @@ public class MainController {
 
         log.info(this.getClass().getName() + ".findpw end!");
 
-        return "/findpw";
+        return "login/findpw";
     }
 
     @RequestMapping(value = "index")
@@ -66,7 +66,7 @@ public class MainController {
 
         log.info(this.getClass().getName() + ".login end!");
 
-        return "/login";
+        return "login/login";
     }
 
     @RequestMapping(value = "play")
@@ -86,7 +86,7 @@ public class MainController {
 
         log.info(this.getClass().getName() + ".register end!");
 
-        return "/register";
+        return "login/register";
     }
 
     @RequestMapping(value = "user")
