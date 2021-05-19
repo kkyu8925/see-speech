@@ -27,8 +27,8 @@
           href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
 
     <!-- chat CSS -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/chatcss/core.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/chatcss/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/chatcore.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/chatstyle.css">
 
     <style>
         .chat_head_box {
@@ -167,9 +167,9 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 <!-- chat js -->
-<script src="${pageContext.request.contextPath}/resources/chatjs/core.js"></script>
-<script src="${pageContext.request.contextPath}/resources/chatjs/script.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/chatjs/layout-settings.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/chatcore.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/chatscript.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/chatlayout-settings.js"></script>
 
 </body>
 </html>

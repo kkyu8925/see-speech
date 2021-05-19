@@ -24,10 +24,10 @@
           href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/loginfonts/iconic/css/material-design-iconic-font.min.css">
+          href="${pageContext.request.contextPath}/resources/login/loginfonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/logincss/util.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/logincss/main.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/loginutil.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/loginmain.css">
     <!--===============================================================================================-->
 </head>
 
@@ -76,7 +76,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/vendor/jquery-1.12.4.min.js"></script>
 <!-- preloader js -->
 <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
-<script src="${pageContext.request.contextPath}/resources/loginjs/main.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/loginmain.js"></script>
 
 </body>
 </html>
