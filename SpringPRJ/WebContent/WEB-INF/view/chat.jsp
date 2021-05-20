@@ -153,9 +153,9 @@
 <!-- footer&Scroll Up end -->
 
 <!-- JS here -->
-<script src="${pageContext.request.contextPath}/resources/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <!-- Jquery Mobile Menu -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
 <!-- Jquery Slick , Owl-Carousel Plugins -->

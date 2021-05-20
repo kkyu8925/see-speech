@@ -21,7 +21,7 @@
           href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
 
     <style>
-        #topic-content-style {
+        .topic-content-style {
             color: #ffffff;
             font-weight: 700;
             font-size: 20px;
@@ -296,7 +296,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic1.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +308,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic2.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -320,7 +320,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic3.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic4.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -344,7 +344,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic5.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +356,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic6.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -368,7 +368,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic7.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -380,7 +380,7 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/topic8.png" alt="">
                             <div class="topic-content-box">
                                 <div class="topic-content">
-                                    <h3 id="topic-content-style">Programing</h3>
+                                    <h3 class="topic-content-style">Programing</h3>
                                 </div>
                             </div>
                         </div>
@@ -431,9 +431,9 @@
 <!-- footer&Scroll Up end -->
 
 <!-- JS here -->
-<script src="${pageContext.request.contextPath}/resources/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <!-- Jquery Mobile Menu -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
 <!-- Jquery Slick , Owl-Carousel Plugins -->

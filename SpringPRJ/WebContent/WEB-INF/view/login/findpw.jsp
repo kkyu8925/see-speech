@@ -62,7 +62,7 @@
 </div>
 
 <!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <!-- preloader js -->
 <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/loginmain.js"></script>
