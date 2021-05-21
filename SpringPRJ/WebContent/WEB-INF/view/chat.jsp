@@ -187,7 +187,7 @@
         SpeechKITT.annyang();
 
         // Define a stylesheet for KITT to use
-        SpeechKITT.setStylesheet('${pageContext.request.contextPath}/resources/js/themes/flat.css');
+        SpeechKITT.setStylesheet('${pageContext.request.contextPath}/resources/css/themes/flat.css');
 
         // Render KITT's interface
         SpeechKITT.vroom();
