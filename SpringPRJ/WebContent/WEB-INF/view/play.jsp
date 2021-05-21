@@ -48,10 +48,9 @@
         }
 
         .mic_box {
+            position: relative;
+            margin-bottom: 100px;
             justify-content: center;
-            margin-bottom: 30px;
-            color: blue;
-            cursor: pointer;
         }
 
         .context_box {
@@ -99,8 +98,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-sm-center mic_box">
-                <i class="fas fa-microphone-alt fa-4x"></i>
+            <div id="micButtonBox" class="row justify-content-sm-center mic_box">
+
             </div>
             <div class="row justify-content-sm-center context_box">
                 <div class="features-caption">
@@ -135,6 +134,27 @@
 <script src="${pageContext.request.contextPath}/resources/js/hover-direction-snake.min.js"></script>
 <!-- Jquery Plugins, main Jquery -->
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
+<!-- annyang js & speechkitt -->
+<script src="${pageContext.request.contextPath}/resources/js/annyang.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/speechkitt.js"></script>
+<script>
+    if (annyang) {
+        // Add our commands to annyang
+        annyang.addCommands({
+            'hello': function() { alert('Hello world!'); }
+        });
+
+        // Tell KITT to use annyang
+        SpeechKITT.annyang();
+
+        // Define a stylesheet for KITT to use
+        SpeechKITT.setStylesheet('${pageContext.request.contextPath}/resources/js/themes/flat.css');
+
+        // Render KITT's interface
+        SpeechKITT.vroom();
+    }
+</script>
 
 </body>
 </html>

@@ -45,9 +45,13 @@
             color: blue;
             cursor: pointer;
         }
-
-        #chat_footer {
+        .chat-footer {
             position: relative;
+        }
+        #micButtonBox {
+            position: relative;
+            top: 15%;
+            left: 44%;
         }
     </style>
 </head>
@@ -61,7 +65,7 @@
 <%@include file="/WEB-INF/view/inc/header.jsp" %>
 <!-- header end -->
 
-<main>
+<main style="overflow-x:hidden">
     <!-- slider Area Start-->
     <%@include file="/WEB-INF/view/inc/section.jsp" %>
     <!-- slider Area end-->
@@ -133,8 +137,8 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div id="chat_footer">
-
+                                    <div class="chat-footer">
+                                        <div id="micButtonBox" ></div>
                                     </div>
                                 </div>
                             </div>

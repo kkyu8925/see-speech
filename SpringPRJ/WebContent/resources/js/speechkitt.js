@@ -126,7 +126,7 @@
     _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label>';
     _guiNodes.style.display = 'none';
     // document.body.appendChild(_guiNodes);
-    document.getElementById("chat_footer").appendChild(_guiNodes);
+    document.getElementById("micButtonBox").appendChild(_guiNodes);
 
     _updateListeningText();
 
