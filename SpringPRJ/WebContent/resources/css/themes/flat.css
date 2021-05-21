@@ -13,8 +13,8 @@
     z-index: 200;
     border-radius: 40px;
     position: absolute;
-    top: 50%;
-    right: 50%;
+    /*top: 15%;*/
+    /*right: 50%;*/
     outline: none;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
