@@ -41,15 +41,13 @@
             padding-right: 20px;
         }
 
-        .chat-footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
         .chat-footer i {
             color: blue;
             cursor: pointer;
+        }
+
+        #chat_footer {
+            position: relative;
         }
     </style>
 </head>
@@ -135,8 +133,8 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="chat-footer">
-                                        <i class="fas fa-microphone-alt fa-4x"></i>
+                                    <div id="chat_footer">
+
                                     </div>
                                 </div>
                             </div>
@@ -170,6 +168,27 @@
 <script src="${pageContext.request.contextPath}/resources/js/chatcore.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/chatscript.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/chatlayout-settings.js"></script>
+
+<!-- annyang js & speechkitt -->
+<script src="${pageContext.request.contextPath}/resources/js/annyang.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/speechkitt.js"></script>
+<script>
+    if (annyang) {
+        // Add our commands to annyang
+        annyang.addCommands({
+            'hello': function() { alert('Hello world!'); }
+        });
+
+        // Tell KITT to use annyang
+        SpeechKITT.annyang();
+
+        // Define a stylesheet for KITT to use
+        SpeechKITT.setStylesheet('${pageContext.request.contextPath}/resources/js/themes/flat.css');
+
+        // Render KITT's interface
+        SpeechKITT.vroom();
+    }
+</script>
 
 </body>
 </html>
