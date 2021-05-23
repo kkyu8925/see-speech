@@ -1,34 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: data03
-  Date: 2021-04-06
-  Time: 오후 5:11
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Speech</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/login/loginfonts/iconic/css/material-design-iconic-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/loginutil.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/loginmain.css">
-    <!--===============================================================================================-->
+    <!-- login head Start -->
+    <%@include file="/WEB-INF/view/inc/loginhead.jsp" %>
+    <!-- login head end -->
 </head>
 
 <body>
@@ -61,11 +36,9 @@
     </div>
 </div>
 
-<!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<!-- preloader js -->
-<script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/loginmain.js"></script>
+<!-- login js Start -->
+<%@include file="/WEB-INF/view/inc/loginjs.jsp" %>
+<!-- login js end -->
 
 </body>
 </html>

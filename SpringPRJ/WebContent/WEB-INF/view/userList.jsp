@@ -1,30 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: data03
-  Date: 2021-04-06
-  Time: 오후 5:13
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Speech</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/themify-icons.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slick.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
+    <!-- head Start -->
+    <%@include file="/WEB-INF/view/inc/head.jsp" %>
+    <!-- head end -->
 
     <style>
         .delete_box {
@@ -41,7 +20,6 @@
             color: white;
             cursor: pointer;
         }
-
     </style>
     <script type="text/javascript">
         function deleteBoxClickHandler() {
@@ -160,7 +138,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">
-                    <div class="section-tittle text-center mt-40">
+                    <div class="section-tittle text-center" style="margin-bottom: 40px;margin-top: 25px">
                         <button type="submit" class="boxed-btn" onclick="location.href='create.do'"
                                 style="font-weight: bold;">생성하기
                         </button>
@@ -176,20 +154,9 @@
 <%@include file="/WEB-INF/view/inc/footer.jsp" %>
 <!-- footer&Scroll Up end -->
 
-<!-- JS here -->
-<script src="${pageContext.request.contextPath}/resources/js/modernizr-3.5.0.min.js"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<!-- Jquery Mobile Menu -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="${pageContext.request.contextPath}/resources/js/slick.min.js"></script>
-<!-- Progress -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.barfiller.js"></script>
-<!-- counter , waypoint,Hover Direction -->
-<script src="${pageContext.request.contextPath}/resources/js/hover-direction-snake.min.js"></script>
-<!-- Jquery Plugins, main Jquery -->
-<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+<!-- js file start -->
+<%@include file="/WEB-INF/view/inc/jsfile.jsp" %>
+<!-- js file end -->
 
 </body>
 </html>

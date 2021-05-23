@@ -1,30 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: data03
-  Date: 2021-04-06
-  Time: 오후 5:11
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Speech</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/themify-icons.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slick.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
+    <!-- head Start -->
+    <%@include file="/WEB-INF/view/inc/head.jsp" %>
+    <!-- head end -->
 
     <style>
         #table_button_box {
@@ -37,12 +16,12 @@
             font-weight: bold;
         }
 
-        .histroy_button {
+        .history_button {
             color: #1f2b7b;
             border-color: #1f2b7b;
         }
 
-        .histroy_button:hover, .histroy_button:focus {
+        .history_button:hover, .history_button:focus {
             background-color: #1f2b7b;
             border-color: #1f2b7b;
             color: white;
@@ -72,7 +51,7 @@
 
         .nav_box {
             margin-top: 0;
-            padding-bottom: 30px;
+            padding-bottom: 50px;
         }
 
         .page-link:focus {
@@ -98,6 +77,11 @@
             margin-bottom: 30px;
             width: 30%;
         }
+        @media screen and (max-width: 990px) {
+            .input_title {
+                width: 50%;
+            }
+        }
 
         .plus_table_row {
             justify-content: center;
@@ -112,6 +96,7 @@
             align-items: center;
         }
     </style>
+
     <script type="text/javascript">
         function createQuizHandler() {
             alert("문제생성")
@@ -191,31 +176,19 @@
 
             <div id="table_button_box">
                 <button type="submit" class="boxed-btn practice_button">확인</button>
-                <button type="submit" class="boxed-btn histroy_button" onclick="history.back()">이전</button>
+                <button type="submit" class="boxed-btn history_button" onclick="history.back()">이전</button>
             </div>
 
         </div>
     </div>
 </main>
-
 <!-- footer&Scroll Up start -->
 <%@include file="/WEB-INF/view/inc/footer.jsp" %>
 <!-- footer&Scroll Up end -->
 
-<!-- JS here -->
-<script src="${pageContext.request.contextPath}/resources/js/modernizr-3.5.0.min.js"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<!-- Jquery Mobile Menu -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="${pageContext.request.contextPath}/resources/js/slick.min.js"></script>
-<!-- Progress -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.barfiller.js"></script>
-<!-- counter , waypoint,Hover Direction -->
-<script src="${pageContext.request.contextPath}/resources/js/hover-direction-snake.min.js"></script>
-<!-- Jquery Plugins, main Jquery -->
-<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+<!-- js file start -->
+<%@include file="/WEB-INF/view/inc/jsfile.jsp" %>
+<!-- js file end -->
 
 </body>
 </html>

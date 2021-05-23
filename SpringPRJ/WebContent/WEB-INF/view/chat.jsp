@@ -1,30 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: data03
-  Date: 2021-04-06
-  Time: 오후 5:09
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Speech</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/themify-icons.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slick.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/resources/fontawesome-free-5.15.3-web/css/all.min.css">
+    <!-- head Start -->
+    <%@include file="/WEB-INF/view/inc/head.jsp" %>
+    <!-- head end -->
 
     <!-- chat CSS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/chatcore.css">
@@ -45,14 +24,32 @@
             color: blue;
             cursor: pointer;
         }
+
         .chat-footer {
             position: relative;
         }
+
         #micButtonBox {
             position: relative;
             top: 15%;
-            left: 44%;
+            left: 47%;
         }
+        @media only screen and (min-width: 426px) and (max-width: 576px) {
+            #micButtonBox {
+                left: 43%;
+            }
+        }
+        @media only screen and (min-width: 400px) and (max-width: 425px) {
+            #micButtonBox {
+                left: 41%;
+            }
+        }
+        @media only screen and (min-width: 300px) and (max-width: 399px) {
+            #micButtonBox {
+                left: 39%;
+            }
+        }
+
     </style>
 </head>
 
@@ -138,7 +135,7 @@
                                         </ul>
                                     </div>
                                     <div class="chat-footer">
-                                        <div id="micButtonBox" ></div>
+                                        <div id="micButtonBox"></div>
                                     </div>
                                 </div>
                             </div>
@@ -154,20 +151,10 @@
 <%@include file="/WEB-INF/view/inc/footer.jsp" %>
 <!-- footer&Scroll Up end -->
 
-<!-- JS here -->
-<script src="${pageContext.request.contextPath}/resources/js/modernizr-3.5.0.min.js"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-<!-- Jquery Mobile Menu -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="${pageContext.request.contextPath}/resources/js/slick.min.js"></script>
-<!-- Progress -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery.barfiller.js"></script>
-<!-- counter , waypoint,Hover Direction -->
-<script src="${pageContext.request.contextPath}/resources/js/hover-direction-snake.min.js"></script>
-<!-- Jquery Plugins, main Jquery -->
-<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+<!-- js file start -->
+<%@include file="/WEB-INF/view/inc/jsfile.jsp" %>
+<!-- js file end -->
+
 <!-- chat js -->
 <script src="${pageContext.request.contextPath}/resources/js/chatcore.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/chatscript.min.js"></script>
@@ -180,7 +167,9 @@
     if (annyang) {
         // Add our commands to annyang
         annyang.addCommands({
-            'hello': function() { alert('Hello world!'); }
+            'hello': function () {
+                alert('Hello world!');
+            }
         });
 
         // Tell KITT to use annyang

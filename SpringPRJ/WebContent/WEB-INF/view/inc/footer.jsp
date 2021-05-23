@@ -1,12 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: data03
-  Date: 2021-05-13
-  Time: 오후 8:09
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <footer>
     <div class="footer-wrappper footer-bg">
         <!-- footer-bottom area -->
