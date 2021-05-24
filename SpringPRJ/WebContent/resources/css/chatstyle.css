@@ -3514,6 +3514,7 @@ body.IE .register-page-wrap .container {
   margin-left: 60px;
 }
 .chat-box .chat-desc ul li .chat-body p {
+  display: inline-block;
   font-size: 15px;
   line-height: 24px;
   color: #33484f;
