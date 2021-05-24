@@ -117,13 +117,6 @@
         </div>
     </div>
 </main>
-<script>
-    let _date = new Date();
-    let _hours = _date.getHours();
-    let _min = _date.getMinutes();
-
-    document.querySelector(".init_chat_time").innerHTML = _hours + ':' + _min;
-</script>
 
 <!-- footer&Scroll Up start -->
 <%@include file="/WEB-INF/view/inc/footer.jsp" %>
@@ -142,6 +135,20 @@
 <script src="${pageContext.request.contextPath}/resources/js/annyang.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/speechkitt.js"></script>
 <script>
+    function getDatetime() {
+        let _date = new Date();
+        let _hours = _date.getHours();
+        let _min = _date.getMinutes();
+        _hours = _hours < 10 ? '0' + _hours : _hours
+        _min = _min < 10 ? '0' + _min : _min
+        return _hours + ':' + _min;
+    }
+
+    // 첫번째 심심이 말풍선 시간 init
+    let dateInitTime = getDatetime();
+    document.querySelector(".init_chat_time").innerHTML = dateInitTime;
+
+    /* ##### 음성 인식 Annyang.js start ##### */
     if (annyang) {
         // Add our commands to annyang
         annyang.addCommands({
@@ -158,11 +165,6 @@
         recognition.interimResults = false;
         //음성 인식결과 가져오기
         recognition.onresult = function (event) {
-
-            let _date = new Date();
-            let _hours = _date.getHours();
-            let _min = _date.getMinutes();
-
             final_transcript = "";
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 if (event.results[i].isFinal) {
@@ -171,7 +173,8 @@
             }
             console.log("final :" + final_transcript);
 
-            // 사용자 음성
+            // 사용자 음성 html append
+            let dateTime = getDatetime();
             let resHTML = "";
             resHTML += '<li class="clearfix admin_chat">';
             resHTML += '<span class="chat-img">';
@@ -179,23 +182,19 @@
             resHTML += '</span>';
             resHTML += '<div class="chat-body clearfix">';
             resHTML += '<p>' + final_transcript + '</p>';
-            resHTML += '<div class="chat_time">' + _hours + ':' + _min + '</div>';
+            resHTML += '<div class="chat_time">' + dateTime + '</div>';
             resHTML += '</div>';
             resHTML += '</li>';
-
             $("#chat__ul").append(resHTML);
 
-            //Ajax 호출
+            // 심심이 api ajax
             $.ajax({
                 url: "/chat/msg.do",
                 type: "post",
                 dataType: "JSON",
                 data: {"send_msg": final_transcript},
                 success: function (json) {
-
-                    _date = new Date();
-                    _hours = _date.getHours();
-                    _min = _date.getMinutes();
+                    let _dateTime = getDatetime();
 
                     // console.log(json.res_msg);
                     resHTML = "";
@@ -205,11 +204,10 @@
                     resHTML += '</span>';
                     resHTML += '<div class="chat-body clearfix">';
                     resHTML += '<p>' + json.res_msg + '</p>';
-                    resHTML += '<div class="chat_time">' + _hours + ':' + _min + '</div>';
+                    resHTML += '<div class="chat_time">' + _dateTime + '</div>';
                     resHTML += '</div>';
                     resHTML += '</li>';
                     $("#chat__ul").append(resHTML);
-
                 }
             })
         };
@@ -223,6 +221,7 @@
         // Render KITT's interface
         SpeechKITT.vroom();
     }
+    /* ##### 음성 인식 Annyang.js end ##### */
 </script>
 
 </body>
