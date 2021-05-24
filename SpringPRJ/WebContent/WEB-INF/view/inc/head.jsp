@@ -2,7 +2,8 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>S&S</title>
-<meta name="description" content="">
+<meta name="description" content="See&Speech">
+<meta property="og:image" content="${pageContext.request.contextPath}/resources/img/hero/hero2.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
