@@ -389,7 +389,7 @@
         <div class="container">
             <div class="row justify-content-sm-center">
                 <div class="chatBox col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-30 cursor_pointer apiButton" onclick="location.href='chat.do'">
+                    <div class="single-services mb-30 cursor_pointer apiButton" onclick="location.href='apiChat.do'">
                         <div class="features-icon">
                             <img src="${pageContext.request.contextPath}/resources/img/icon/icon2.svg" alt="">
                         </div>
@@ -400,7 +400,7 @@
                     </div>
                 </div>
                 <div class="chatBox col-lg-4 col-md-6 col-sm-8">
-                    <div class="single-services mb-30 cursor_pointer apiButton" onclick="location.href='chat.do'">
+                    <div class="single-services mb-30 cursor_pointer apiButton" onclick="location.href='userChat.do'">
                         <div class="features-icon">
                             <img src="${pageContext.request.contextPath}/resources/img/icon/icon1.svg" alt="">
                         </div>
