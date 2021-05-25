@@ -4,6 +4,9 @@
     <title>error</title>
 </head>
 <body>
-hello error
+<script>
+    alert("오류!!")
+    location.href = "index.do"
+</script>
 </body>
 </html>
