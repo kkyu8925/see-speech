@@ -46,6 +46,9 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/DispatcherServlet-servlet.xml</param-value>
         </init-param>
+        <load-on-startup>1</load-on-startup>
+        <!-- 웹소켓을 위한 설정(비동기지원) -->
+        <async-supported>true</async-supported>
     </servlet>
     <!-- .do로 접속되는 url 매핑 -->
     <servlet-mapping>
