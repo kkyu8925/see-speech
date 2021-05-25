@@ -151,11 +151,7 @@
     /* ##### 음성 인식 Annyang.js start ##### */
     if (annyang) {
         // Add our commands to annyang
-        annyang.addCommands({
-            'hello': function () {
-                alert('Hello world!');
-            }
-        });
+        annyang.addCommands({});
 
         //음성인식 값 받아오기위한 객체 생성
         let recognition = annyang.getSpeechRecognizer();
