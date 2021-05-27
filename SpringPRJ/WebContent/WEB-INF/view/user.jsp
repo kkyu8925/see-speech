@@ -15,7 +15,7 @@
             border-color: #f44a40;
         }
 
-        .delete_userButton:hover, .delete_userButton:focus {
+        .delete_userButton:hover {
             background-color: #f44a40;
             border-color: #f44a40;
             color: white;
@@ -24,9 +24,10 @@
         .update_pwButton {
             color: #4cd3e3;
             border-color: #4cd3e3;
+            margin-right: 25px;
         }
 
-        .update_pwButton:hover, .update_pwButton:focus {
+        .update_pwButton:hover {
             background-color: #4cd3e3;
             border-color: #4cd3e3;
             color: white;
@@ -34,7 +35,7 @@
 
         .userInfo_buttonBox {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             padding-top: 30px;
         }
     </style>

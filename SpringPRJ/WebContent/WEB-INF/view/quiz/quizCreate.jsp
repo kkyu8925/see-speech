@@ -77,6 +77,7 @@
             margin-bottom: 30px;
             width: 30%;
         }
+
         @media screen and (max-width: 990px) {
             .input_title {
                 width: 50%;
@@ -130,8 +131,8 @@
                 <div class="progress-table-wrap">
                     <div class="progress-table" style="padding-bottom: 15px;">
                         <div class="table-head">
-                            <div class="serial">#</div>
-                            <div class="country">문제</div>
+                            <div class="serial">NO</div>
+                            <div class="country">QUIZ</div>
                             <div class="percentage">Button</div>
                         </div>
 
@@ -152,27 +153,6 @@
                     </div>
                 </div>
             </div>
-
-            <nav class="blog-pagination justify-content-center d-flex nav_box">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a href="#" class="page-link li_angle" aria-label="Previous">
-                            <i class="ti-angle-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">1</a>
-                    </li>
-                    <li class="page-item active">
-                        <a href="#" class="page-link">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a href="#" class="page-link li_angle" aria-label="Next">
-                            <i class="ti-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
 
             <div id="table_button_box">
                 <button type="submit" class="boxed-btn practice_button">확인</button>

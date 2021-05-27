@@ -54,6 +54,15 @@
         .table-row:hover {
             background-color: bisque;
         }
+        .progress-table .number {
+            width: 30%;
+        }
+        .progress-table .quiz {
+            width: 70%;
+        }
+        .container {
+            max-width: 800px;
+        }
     </style>
     <script type="text/javascript">
         function onePracticeHandler(e) {
@@ -89,8 +98,8 @@
                 <div class="progress-table-wrap">
                     <div class="progress-table" style="padding-bottom: 15px;">
                         <div class="table-head">
-                            <div class="serial">#</div>
-                            <div class="country">문제</div>
+                            <div class="serial number">NO</div>
+                            <div class="country quiz">QUIZ</div>
                         </div>
 
                         <%
@@ -100,9 +109,9 @@
                         %>
 
                         <div class="table-row">
-                            <div class="serial"><%=num %>
+                            <div class="serial number"><%=num %>
                             </div>
-                            <div class="country" onclick="onePracticeHandler(this)"><%=SS_QUIZ_CONT_LIST.get(i) %>
+                            <div class="country quiz" onclick="onePracticeHandler(this)"><%=SS_QUIZ_CONT_LIST.get(i) %>
                             </div>
                         </div>
 

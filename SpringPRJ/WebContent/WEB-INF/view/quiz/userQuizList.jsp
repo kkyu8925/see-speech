@@ -23,7 +23,7 @@
     </style>
     <script type="text/javascript">
         function deleteBoxClickHandler() {
-            confirm("삭제?")
+            confirm("삭제 하시겠습니까?")
         }
     </script>
 </head>
@@ -66,7 +66,7 @@
                                 <h3 style="text-align: center;">문제1</h3>
                                 <div class="properties__footer d-flex justify-content-between align-items-center"></div>
 
-                                <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                             <div class="properties__caption">
                                 <h3 style="text-align: center;">문제2</h3>
                                 <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             <div class="properties__caption">
                                 <h3 style="text-align: center;">문제3</h3>
                                 <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             <div class="properties__caption">
                                 <h3 style="text-align: center;">문제4</h3>
                                 <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             <div class="properties__caption">
                                 <h3 style="text-align: center;">문제5</h3>
                                 <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
                             </div>
                         </div>
                     </div>

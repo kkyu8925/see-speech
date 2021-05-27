@@ -53,8 +53,12 @@
             }
         }
 
-        .user_come_msg {
-            text-align: center;
+        .user_come_msg_container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .user_come_msg_div {
             font-size: 20px;
             color: darkgray;
         }
@@ -159,14 +163,14 @@
             console.log(event.data);
         };
         ws.onmessage = function (event) {
-            console.log("onmessage: "+event.data);
+            console.log("onmessage: " + event.data);
             let msg = event.data;
             let splitMsg = msg.split(",");
             let msgNum = splitMsg[0]
             let msgText = splitMsg[1];
 
-            if(msgNum === '0') {
-                let resHTML = '<li class="user_come_msg">'+msgText+'</li>';
+            if (msgNum === '0') {
+                let resHTML = '<li class="user_come_msg_container"><div class="user_come_msg_div">' + msgText + '</div</li>';
                 $("#chat__ul").append(resHTML);
             } else {
                 writeResponse(msg);
