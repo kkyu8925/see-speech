@@ -173,17 +173,17 @@
         if (cnt === 0) {
             alert("전부 학습하셨습니다!");
             location.href = "/index.do";
+        } else {
+            // 다음 문제
+            document.querySelector("#quizBox").innerHTML = quizContList.pop();
+            // 푼문제 수 증가
+            let idx = Number(document.querySelector("#quizCntTag").innerHTML) + 1;
+            document.querySelector("#quizCntTag").innerHTML = String(idx);
+            // 답장 div 비우기
+            document.querySelector("#sttBox").innerHTML = "";
         }
 
-        // 다음 문제
-        document.querySelector("#quizBox").innerHTML = quizContList.pop();
-        // 푼문제 수 증가
-        let idx = Number(document.querySelector("#quizCntTag").innerHTML) + 1;
-        document.querySelector("#quizCntTag").innerHTML = String(idx);
-        // 답장 div 비우기
-        document.querySelector("#sttBox").innerHTML = "";
     }
-
 </script>
 
 </body>
