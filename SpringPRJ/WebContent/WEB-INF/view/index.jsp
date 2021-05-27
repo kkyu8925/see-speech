@@ -1,4 +1,15 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    List<Map<String, String>> rQuizList = ((List<Map<String, String>>) request.getAttribute("rQuizList"));
+
+    if (rQuizList == null) {
+        rQuizList = new ArrayList<>();
+    }
+
+%>
 <html>
 <head>
     <!-- head Start -->
@@ -52,6 +63,12 @@
                 </div>
             </div>
             <div class="courses-actives">
+
+                <%
+                    for (Map<String, String> rMap : rQuizList) {
+                        if (rMap.get("quizSort").equals("0")) {
+                %>
+
                 <!-- Single -->
                 <div class="properties pb-20">
                     <div class="properties__card">
@@ -59,7 +76,8 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/featured1.png" alt="">
                         </div>
                         <div class="properties__caption">
-                            <h3>동물</h3>
+                            <h3><%=rMap.get("quizTitle") %>
+                            </h3>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
                                 <div class="restaurant-name">
                                     <div class="rating">
@@ -67,87 +85,21 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
                             </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                            <a href="listPage.do?quizTitle=<%=rMap.get("quizTitle") %>&quizSort=<%=rMap.get("quizSort") %>"
+                               class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured2.png" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3>동물</h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured3.png" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3>동물</h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured4.png" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3>동물</h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
+
+                <%
+                        }
+                    }
+                %>
+
             </div>
         </div>
     </div>
@@ -166,6 +118,12 @@
                 </div>
             </div>
             <div class="courses-actives">
+
+                <%
+                    for (Map<String, String> rMap : rQuizList) {
+                        if (rMap.get("quizSort").equals("1")) {
+                %>
+
                 <!-- Single -->
                 <div class="properties pb-20">
                     <div class="properties__card">
@@ -173,7 +131,8 @@
                             <img src="${pageContext.request.contextPath}/resources/img/gallery/featured1.png" alt="">
                         </div>
                         <div class="properties__caption">
-                            <h3>동물</h3>
+                            <h3><%=rMap.get("quizTitle") %>
+                            </h3>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
                                 <div class="restaurant-name">
                                     <div class="rating">
@@ -181,87 +140,21 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
                                     </div>
                                 </div>
                             </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                            <a href="listPage.do?quizTitle=<%=rMap.get("quizTitle") %>&quizSort=<%=rMap.get("quizSort") %>"
+                               class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured2.png" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3>동물</h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured3.png" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3>동물</h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured4.png" alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3>동물</h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="listPage.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
+
+                <%
+                        }
+                    }
+                %>
+
             </div>
         </div>
     </div>
@@ -279,6 +172,7 @@
                 </div>
             </div>
             <div class="row">
+
                 <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
                     <div class="single-topic text-center mb-30">
                         <div class="topic-img">
@@ -291,94 +185,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic2.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic3.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic4.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic5.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic6.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic7.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic8.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
             <div class="row justify-content-center">
-                <button class="boxed-btn" style="font-weight: bold;margin-top: 10px;" onclick="location.href='userList.do'">전체보기</button>
+                <button class="boxed-btn" style="font-weight: bold;margin-top: 10px;"
+                        onclick="location.href='userList.do'">전체보기
+                </button>
             </div>
         </div>
     </div>
