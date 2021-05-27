@@ -20,7 +20,27 @@ public class ChatController {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
-    @RequestMapping(value = "chat/msg", method = RequestMethod.POST)
+    @RequestMapping(value = "apiChat.do")
+    public String apiChat() throws Exception {
+
+        log.info(this.getClass().getName() + ".apiChat start!");
+
+        log.info(this.getClass().getName() + ".apiChat end!");
+
+        return "/chat/apiChat";
+    }
+
+    @RequestMapping(value = "userChat.do")
+    public String userChat() throws Exception {
+
+        log.info(this.getClass().getName() + ".userChat start!");
+
+        log.info(this.getClass().getName() + ".userChat end!");
+
+        return "/chat/userChat";
+    }
+
+    @RequestMapping(value = "chat/msg.do", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> msg(HttpServletRequest request) throws Exception {
 
