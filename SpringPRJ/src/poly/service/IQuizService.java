@@ -7,4 +7,5 @@ public interface IQuizService {
 
     List<Map<String, String>> getQuizList();
 
+    List<String> getQuizContList(String quizTitle, String quizSort);
 }

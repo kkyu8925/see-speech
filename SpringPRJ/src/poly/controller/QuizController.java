@@ -5,8 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import poly.service.IQuizService;
+import poly.util.CmmUtil;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.util.List;
 import java.util.Map;
 
@@ -18,18 +22,76 @@ public class QuizController {
     @Resource(name = "QuizService")
     private IQuizService quizService;
 
-    @RequestMapping(value = "index")
+    @RequestMapping(value = "index.do")
     public String index(ModelMap model) throws Exception {
 
         log.info(this.getClass().getName() + ".index start!");
 
-        List<Map<String, String>> rList = quizService.getQuizList();
+        List<Map<String, String>> rQuizList = quizService.getQuizList();
 
-        model.addAttribute("rList", rList);
+        model.addAttribute("rQuizList", rQuizList);
 
         log.info(this.getClass().getName() + ".index end!");
 
         return "/index";
+    }
+
+    @RequestMapping(value = "listPage.do")
+    public String listPage(HttpServletRequest request, ModelMap model, HttpSession session) throws Exception {
+
+        log.info(this.getClass().getName() + ".listPage start!");
+
+        String quizTitle = CmmUtil.nvl(request.getParameter("quizTitle"));
+        String quizSort = CmmUtil.nvl(request.getParameter("quizSort"));
+
+        log.info("quizTitle : " + quizTitle);
+        log.info("quizSort : " + quizSort);
+
+        List<String> rQuizContList = quizService.getQuizContList(quizTitle, quizSort);
+
+        session.setAttribute("SS_QUIZ_CONT_LIST", rQuizContList);
+
+        model.addAttribute("quizTitle", quizTitle);
+
+        log.info(this.getClass().getName() + ".listPage end!");
+
+        return "quiz/quizListPage";
+    }
+
+    @RequestMapping(value = "play.do")
+    public String play(HttpServletRequest request, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".play start!");
+
+        String quizContTitle = CmmUtil.nvl(request.getParameter("quizContTitle"));
+
+        log.info("quizContTitle : " + quizContTitle);
+
+        model.addAttribute("quizContTitle", quizContTitle);
+
+        log.info(this.getClass().getName() + ".play end!");
+
+        return "quiz/quizPlay";
+    }
+
+    @RequestMapping(value = "userList.do")
+    public String userList() throws Exception {
+
+        log.info(this.getClass().getName() + ".userList start!");
+
+        log.info(this.getClass().getName() + ".userList end!");
+
+        return "quiz/userQuizList";
+    }
+
+    @RequestMapping(value = "create.do")
+    public String create() throws Exception {
+
+        log.info(this.getClass().getName() + ".create start!");
+
+        log.info(this.getClass().getName() + ".create end!");
+
+        return "quiz/quizCreate";
     }
 
 }

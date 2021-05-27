@@ -7,4 +7,5 @@ public interface IQuizMapper {
 
     List<Map<String, String>> getQuizList(String colNm);
 
+    List<String> getQuizContList(String colNm, String quizTitle, String quizSort);
 }

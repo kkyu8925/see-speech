@@ -25,14 +25,32 @@ public class QuizService implements IQuizService {
 
         String colNm = "QuizCollection";
 
-        List<Map<String, String>> rList = quizMapper.getQuizList(colNm);
+        List<Map<String, String>> rQuizList = quizMapper.getQuizList(colNm);
 
-        if (rList == null) {
-            rList = new ArrayList<>();
+        if (rQuizList == null) {
+            rQuizList = new ArrayList<>();
         }
 
         log.info(this.getClass().getName() + ".getQuizList end!");
 
-        return rList;
+        return rQuizList;
+    }
+
+    @Override
+    public List<String> getQuizContList(String quizTitle, String quizSort) {
+
+        log.info(this.getClass().getName() + ".getQuizContList start!");
+
+        String colNm = "QuizCollection";
+
+        List<String> rQuizContList = quizMapper.getQuizContList(colNm, quizTitle, quizSort);
+
+        if (rQuizContList == null) {
+            rQuizContList = new ArrayList<>();
+        }
+
+        log.info(this.getClass().getName() + ".getQuizContList end!");
+
+        return rQuizContList;
     }
 }
