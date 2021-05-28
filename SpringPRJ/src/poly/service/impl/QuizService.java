@@ -14,16 +14,16 @@ import java.util.Map;
 public class QuizService implements IQuizService {
 
     private final Logger log = Logger.getLogger(this.getClass());
+    // mongoDB collection name
+    private final String colNm = "QuizCollection";
 
     @Resource(name = "QuizMapper")
     private IQuizMapper quizMapper;
 
     @Override
-    public List<Map<String, String>> getQuizList() {
+    public List<Map<String, String>> getQuizList() throws Exception {
 
         log.info(this.getClass().getName() + ".getQuizList start!");
-
-        String colNm = "QuizCollection";
 
         List<Map<String, String>> rQuizList = quizMapper.getQuizList(colNm);
 
@@ -37,11 +37,9 @@ public class QuizService implements IQuizService {
     }
 
     @Override
-    public List<String> getQuizContList(String quizTitle, String quizSort) {
+    public List<String> getQuizContList(String quizTitle, String quizSort) throws Exception {
 
         log.info(this.getClass().getName() + ".getQuizContList start!");
-
-        String colNm = "QuizCollection";
 
         List<String> rQuizContList = quizMapper.getQuizContList(colNm, quizTitle, quizSort);
 

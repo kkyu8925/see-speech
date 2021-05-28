@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import poly.persistence.mongo.IQuizMapper;
+import poly.persistence.mongo.comm.AbstractMongoDBCommon;
 import poly.util.CmmUtil;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 @Component("QuizMapper")
-public class QuizMapper implements IQuizMapper {
+public class QuizMapper extends AbstractMongoDBCommon implements IQuizMapper {
 
     @Autowired
     private MongoTemplate mongodb;
@@ -24,7 +25,7 @@ public class QuizMapper implements IQuizMapper {
     private final Logger log = Logger.getLogger(this.getClass());
 
     @Override
-    public List<Map<String, String>> getQuizList(String colNm) {
+    public List<Map<String, String>> getQuizList(String colNm) throws Exception {
 
         log.info(this.getClass().getName() + ".getQuizList Start!");
 
@@ -61,7 +62,7 @@ public class QuizMapper implements IQuizMapper {
     }
 
     @Override
-    public List<String> getQuizContList(String colNm, String quizTitle, String quizSort) {
+    public List<String> getQuizContList(String colNm, String quizTitle, String quizSort) throws Exception {
 
         log.info(this.getClass().getName() + ".getQuizContList Start!");
 

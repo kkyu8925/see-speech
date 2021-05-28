@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface IQuizMapper {
 
-    List<Map<String, String>> getQuizList(String colNm);
+    List<Map<String, String>> getQuizList(String colNm) throws Exception;
 
-    List<String> getQuizContList(String colNm, String quizTitle, String quizSort);
+    List<String> getQuizContList(String colNm, String quizTitle, String quizSort) throws Exception;
 }
