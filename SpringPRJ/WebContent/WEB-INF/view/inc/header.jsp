@@ -20,7 +20,7 @@
                                             <li class="active"><a href="index.do">Home</a></li>
                                             <li class="active"><a href="user.do">User</a></li>
                                             <!-- Button -->
-                                            <li class="button-header"><a href="login.do" class="btn btn3">Log in</a>
+                                            <li class="button-header"><a href="loginPage.do" class="btn btn3">Log in</a>
                                             </li>
                                         </ul>
                                     </nav>
