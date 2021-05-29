@@ -63,7 +63,8 @@
                 <div class="media align-items-center">
                     <img src="${pageContext.request.contextPath}/resources/img/chat/basicuser.png" alt="">
                     <div class="media-body">
-                        <h4>Email@email.com</h4>
+                        <h4>${SS_USER_EMAIL}
+                        </h4>
                     </div>
                 </div>
             </div>
