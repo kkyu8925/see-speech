@@ -16,6 +16,13 @@
 
     <dependencies>
 
+        <!-- 자바 메일 발송 라이브러리 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <!-- web soket -->
         <dependency>
             <groupId>org.springframework</groupId>
