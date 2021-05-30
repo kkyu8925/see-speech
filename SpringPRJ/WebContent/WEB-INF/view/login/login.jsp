@@ -13,18 +13,18 @@
 
 <div class="container-login100">
     <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-        <form class="login100-form validate-form" action="index.do" method="POST">
+        <form class="login100-form validate-form" action="login.do" method="POST">
             <span class="login100-form-title p-b-37">
                 Sign In
             </span>
 
             <div class="wrap-input100 validate-input m-b-20" data-validate="Enter email">
-                <input class="input100" type="email" name="email" placeholder="email" autocomplete="off">
+                <input class="input100" type="email" name="user_email" placeholder="email" autocomplete="off">
                 <span class="focus-input100"></span>
             </div>
 
             <div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
-                <input class="input100" type="password" name="pw" placeholder="password">
+                <input class="input100" type="password" name="user_pw" placeholder="password">
                 <span class="focus-input100"></span>
             </div>
 
@@ -54,7 +54,7 @@
                     Sign Up
                 </a>
                 <div>/</div>
-                <a href="findpw.do" class="txt2 hov1">
+                <a href="findPw.do" class="txt2 hov1">
                     Forgot Password?
                 </a>
             </div>

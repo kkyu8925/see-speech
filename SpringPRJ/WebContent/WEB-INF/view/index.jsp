@@ -173,23 +173,23 @@
             </div>
             <div class="row">
 
-                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">
-                    <div class="single-topic text-center mb-30">
-                        <div class="topic-img">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic1.png" alt="">
-                            <div class="topic-content-box">
-                                <div class="topic-content">
-                                    <h3 class="topic-content-style">Programing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">--%>
+<%--                    <div class="single-topic text-center mb-30">--%>
+<%--                        <div class="topic-img">--%>
+<%--                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic1.png" alt="">--%>
+<%--                            <div class="topic-content-box">--%>
+<%--                                <div class="topic-content">--%>
+<%--                                    <h3 class="topic-content-style">Programing</h3>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
             </div>
             <div class="row justify-content-center">
                 <button class="boxed-btn" style="font-weight: bold;margin-top: 10px;"
-                        onclick="location.href='userList.do'">전체보기
+                        onclick="location.href='userQuizList.do'">전체보기
                 </button>
             </div>
         </div>
