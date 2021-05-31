@@ -38,7 +38,7 @@ public class MailService implements IMailService {
         String toMail = CmmUtil.nvl(pDTO.getToMail()); // 받는 사람
 
         Properties props = new Properties();
-        String host = "smtp.gmail.com";
+        String host = "smtp.naver.com";
         props.put("mail.smtp.host", host); // javax 외부 라이브러리에 메일 보내는 사람의 정보 설정
         props.put("mail.smtp.auth", "true"); // javax 외부 라이브러리에 메일 보내는 사람 인증 여부 설정
 

@@ -19,36 +19,60 @@ public class UserService implements IUserService {
     private IUserMapper userMapper;
 
     @Override
-    public void insertUser(Map<String, Object> rMap) throws Exception {
+    public void insertUser(Map<String, Object> pMap) throws Exception {
 
         log.info(this.getClass().getName() + ".insertUser start");
 
-        userMapper.insertUser(colNm, rMap);
+        userMapper.insertUser(colNm, pMap);
 
         log.info(this.getClass().getName() + ".insertUser end");
 
     }
 
     @Override
-    public Map<String, String> getUserExist(String userEmail) throws Exception {
+    public Map<String, String> getUserExistForAJAX(String user_email) throws Exception {
 
-        log.info(this.getClass().getName() + ".getUserExist start");
+        log.info(this.getClass().getName() + ".getUserExistForAJAX start");
 
-        Map<String, String> rMap = userMapper.getUserExist(colNm, userEmail);
+        Map<String, String> rMap = userMapper.getUserExistForAJAX(colNm, user_email);
 
-        log.info(this.getClass().getName() + ".getUserExist end");
+        log.info(this.getClass().getName() + ".getUserExistForAJAX end");
 
         return rMap;
     }
 
     @Override
-    public int getUserInfo(Map<String, String> pMap) throws Exception {
+    public Map<String, String> getUser(Map<String, String> pMap) throws Exception {
 
-        log.info(this.getClass().getName() + ".getUserInfo start");
+        log.info(this.getClass().getName() + ".getUser start");
 
-        int res = userMapper.getUserInfo(colNm, pMap);
+        Map<String, String> rMap = userMapper.getUser(colNm, pMap);
 
-        log.info(this.getClass().getName() + ".getUserInfo end");
+        log.info(this.getClass().getName() + ".getUser end");
+
+        return rMap;
+    }
+
+    @Override
+    public int updateUserPw(Map<String, Object> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateUserPw start");
+
+        int res = userMapper.updateUserPw(colNm, pMap);
+
+        log.info(this.getClass().getName() + ".updateUserPw end");
+
+        return res;
+    }
+
+    @Override
+    public int deleteUser(Map<String, Object> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".deleteUser start");
+
+        int res = userMapper.deleteUser(colNm, pMap);
+
+        log.info(this.getClass().getName() + ".deleteUser end");
 
         return res;
     }
