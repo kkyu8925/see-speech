@@ -73,14 +73,22 @@ public class QuizController {
         return "quiz/quizPlay";
     }
 
-    @RequestMapping(value = "userList.do")
-    public String userList() throws Exception {
+    @RequestMapping(value = "userQuizList.do")
+    public String userQuizList(HttpSession session, ModelMap model) throws Exception {
 
-        log.info(this.getClass().getName() + ".userList start!");
+        log.info(this.getClass().getName() + ".userQuizList start!");
 
-        log.info(this.getClass().getName() + ".userList end!");
+        String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
 
-        return "quiz/userQuizList";
+        if (SS_USER_EMAIL.equals("")) {
+            model.addAttribute("msg", "로그인이 필요합니다.");
+            model.addAttribute("url", "/loginPage.do");
+            return "/redirect";
+        }
+
+        log.info(this.getClass().getName() + ".userQuizList end!");
+
+        return "user/userQuizList";
     }
 
     @RequestMapping(value = "create.do")
