@@ -70,8 +70,11 @@
             </div>
 
             <div class="userInfo_buttonBox">
-                <button type="submit" class="boxed-btn form__button update_pwButton">암호수정</button>
-                <button type="submit" class="boxed-btn form__button delete_userButton">계정삭제</button>
+                <button onclick="location.href='/updatePwPage.do'" class="boxed-btn form__button update_pwButton">암호수정
+                </button>
+                <button onclick="deleteUser()" class="boxed-btn form__button delete_userButton">
+                    계정삭제
+                </button>
             </div>
         </div>
 
@@ -130,6 +133,18 @@
 <!-- js file start -->
 <%@include file="/WEB-INF/view/inc/jsfile.jsp" %>
 <!-- js file end -->
+
+<script>
+    function deleteUser() {
+        let check = confirm("정말로 삭제하시겠습니까?");
+
+        if (check) {
+            location.href = "/deleteUser.do";
+        }
+    }
+
+
+</script>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
 
 <div class="container-login100">
     <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-        <form class="login100-form validate-form" method="post">
+        <form class="login100-form validate-form" method="post" action="${pageContext.request.contextPath}/findPw.do">
             <span class="login100-form-title p-b-37">Find Password</span>
 
             <div class="wrap-input100 validate-input m-b-20" id="user_email" data-validate="Enter email">

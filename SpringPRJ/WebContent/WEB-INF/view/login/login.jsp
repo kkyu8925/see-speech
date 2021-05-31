@@ -54,7 +54,7 @@
                     Sign Up
                 </a>
                 <div>/</div>
-                <a href="findPw.do" class="txt2 hov1">
+                <a href="findPwPage.do" class="txt2 hov1">
                     Forgot Password?
                 </a>
             </div>

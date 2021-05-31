@@ -60,13 +60,13 @@
 <script>
     function emailCheckHandler(e) {
         console.log("key up")
-        let userEmail = e.value;
+        let user_email = e.value;
 
         $.ajax({
             url: "/getUserExistForAJAX.do",
             type: "post",
             dataType: "JSON",
-            data: {"userEmail": userEmail},
+            data: {"user_email": user_email},
             success: function (json) {
                 let checkRes = json.res;
                 let user_email_node = document.querySelector("#user_email");
