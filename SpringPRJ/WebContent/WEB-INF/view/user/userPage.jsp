@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <html>
 <head>
     <!-- head Start -->
@@ -63,7 +64,7 @@
                 <div class="media align-items-center">
                     <img src="${pageContext.request.contextPath}/resources/img/chat/basicuser.png" alt="">
                     <div class="media-body">
-                        <h4>${SS_USER_EMAIL}
+                        <h4>${SS_USER_EMAIL} (${SS_USER_NAME})
                         </h4>
                     </div>
                 </div>

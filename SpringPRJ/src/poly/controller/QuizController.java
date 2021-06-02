@@ -4,12 +4,17 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import poly.service.IQuizService;
 import poly.util.CmmUtil;
+import poly.util.EncryptUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,13 +27,28 @@ public class QuizController {
     private IQuizService quizService;
 
     @RequestMapping(value = "index.do")
-    public String index(ModelMap model) throws Exception {
+    public String index(ModelMap model, HttpSession session) throws Exception {
 
         log.info(this.getClass().getName() + ".index start!");
 
-        List<Map<String, String>> rQuizList = quizService.getQuizList();
+        try {
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+            String user_email = EncryptUtil.encAES128CBC(SS_USER_EMAIL);
 
-        model.addAttribute("rQuizList", rQuizList);
+            List<String> rUserQuizTitleList = new ArrayList<>();
+            // 유저가 로그인 했을 경우, 자신의 퀴즈 리스트 가져옴
+            if (!SS_USER_EMAIL.equals("")) {
+                rUserQuizTitleList = quizService.getUserQuizTitleList(user_email);
+            }
+
+            List<Map<String, String>> rQuizList = quizService.getQuizList();
+
+            model.addAttribute("rUserQuizTitleList", rUserQuizTitleList);
+            model.addAttribute("rQuizList", rQuizList);
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
 
         log.info(this.getClass().getName() + ".index end!");
 
@@ -40,21 +60,35 @@ public class QuizController {
 
         log.info(this.getClass().getName() + ".listPage start!");
 
-        String quizTitle = CmmUtil.nvl(request.getParameter("quizTitle"));
-        String quizSort = CmmUtil.nvl(request.getParameter("quizSort"));
+        try {
+            String quizTitle = CmmUtil.nvl(request.getParameter("quizTitle"));
+            String quizSort = CmmUtil.nvl(request.getParameter("quizSort"));
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
 
-        log.info("quizTitle : " + quizTitle);
-        log.info("quizSort : " + quizSort);
+            log.info("quizTitle : " + quizTitle);
+            log.info("quizSort : " + quizSort);
+            log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
 
-        List<String> rQuizContList = quizService.getQuizContList(quizTitle, quizSort);
+            List<String> rQuizContList;
 
-        session.setAttribute("SS_QUIZ_CONT_LIST", rQuizContList);
+            if (quizSort.equals("2") && !SS_USER_EMAIL.equals("")) {
+                String user_email = EncryptUtil.encAES128CBC(SS_USER_EMAIL);
+                rQuizContList = quizService.getUserQuizContList(user_email, quizTitle);
+            } else {
+                rQuizContList = quizService.getQuizContList(quizTitle, quizSort);
+            }
 
-        model.addAttribute("quizTitle", quizTitle);
+            session.setAttribute("SS_QUIZ_CONT_LIST", rQuizContList);
+
+            model.addAttribute("quizTitle", quizTitle);
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
 
         log.info(this.getClass().getName() + ".listPage end!");
 
-        return "quiz/quizListPage";
+        return "/quiz/quizListPage";
     }
 
     @RequestMapping(value = "play.do")
@@ -70,7 +104,7 @@ public class QuizController {
 
         log.info(this.getClass().getName() + ".play end!");
 
-        return "quiz/quizPlay";
+        return "/quiz/quizPlay";
     }
 
     @RequestMapping(value = "userQuizList.do")
@@ -78,7 +112,40 @@ public class QuizController {
 
         log.info(this.getClass().getName() + ".userQuizList start!");
 
+        try {
+
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+            log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
+
+            if (SS_USER_EMAIL.equals("")) {
+                model.addAttribute("msg", "로그인이 필요합니다.");
+                model.addAttribute("url", "/loginPage.do");
+                return "/redirect";
+            }
+
+            String user_email = EncryptUtil.encAES128CBC(SS_USER_EMAIL);
+
+            List<String> rUserQuizTitleList = quizService.getUserQuizTitleList(user_email);
+
+            model.addAttribute("rUserQuizTitleList", rUserQuizTitleList);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        log.info(this.getClass().getName() + ".userQuizList end!");
+
+        return "/user/userQuizList";
+    }
+
+    @RequestMapping(value = "create.do")
+    public String create(HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".create start!");
+
         String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+        log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
 
         if (SS_USER_EMAIL.equals("")) {
             model.addAttribute("msg", "로그인이 필요합니다.");
@@ -86,19 +153,195 @@ public class QuizController {
             return "/redirect";
         }
 
-        log.info(this.getClass().getName() + ".userQuizList end!");
-
-        return "user/userQuizList";
-    }
-
-    @RequestMapping(value = "create.do")
-    public String create() throws Exception {
-
-        log.info(this.getClass().getName() + ".create start!");
-
         log.info(this.getClass().getName() + ".create end!");
 
-        return "quiz/quizCreate";
+        return "/quiz/quizCreate";
+    }
+
+    @RequestMapping(value = "insertQuiz.do", method = RequestMethod.POST)
+    public String insertQuiz(HttpServletRequest request, HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".insertQuiz start!");
+
+        try {
+
+            String strQuizList = CmmUtil.nvl(request.getParameter("quizListHiddenInput"));
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+
+            log.info("strQuizList : " + strQuizList);
+            log.info("quiz_title : " + quiz_title);
+            log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
+
+            Map<String, String> pMap = new HashMap<>();
+            pMap.put("user_email", SS_USER_EMAIL);
+            pMap.put("strQuizList", strQuizList);
+            pMap.put("quiz_title", quiz_title);
+
+            quizService.insertUserQuiz(pMap);
+
+            model.addAttribute("msg", "내 퀴즈 저장 성공!");
+            model.addAttribute("url", "/userQuizList.do");
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        log.info(this.getClass().getName() + ".insertQuiz end!");
+
+        return "/redirect";
+
+    }
+
+    @RequestMapping(value = "isQuizTitleExistForAJAX.do", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, String> isQuizTitleExistForAJAX(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info(this.getClass().getName() + ".isQuizTitleExistForAJAX start!");
+
+        Map<String, String> rMap = new HashMap<>();
+
+        try {
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+            String user_email = EncryptUtil.encAES128CBC(SS_USER_EMAIL);
+
+            log.info("user_email : " + SS_USER_EMAIL);
+            log.info("quiz_title : " + quiz_title);
+
+            boolean res = quizService.isQuizTitleExistForAJAX(user_email, quiz_title);
+
+            // true - 존재, false - 없음
+            if (res) {
+                rMap.put("res", "true");
+            } else {
+                rMap.put("res", "false");
+            }
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        log.info(this.getClass().getName() + ".isQuizTitleExistForAJAX end!");
+
+        return rMap;
+    }
+
+    @RequestMapping(value = "deleteOneQuiz.do")
+    public String deleteOneQuiz(HttpServletRequest request, HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".deleteOneQuiz start!");
+
+        String url = "/userQuizList.do";
+        String msg = "";
+
+        try {
+
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+            String user_email = EncryptUtil.encAES128CBC(SS_USER_EMAIL);
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+
+            log.info("user_email : " + SS_USER_EMAIL);
+            log.info("quiz_title : " + quiz_title);
+
+            Map<String, Object> pMap = new HashMap<>();
+            pMap.put("user_email", user_email);
+            pMap.put("quiz_title", quiz_title);
+
+            int res = quizService.deleteOneQuiz(pMap);
+
+            if (res == 1) {
+                msg = "퀴즈 삭제 성공";
+            } else {
+                msg = "퀴즈 삭제 실패";
+            }
+
+        } catch (Exception e) {
+            msg = "서버 오류 입니다.";
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
+
+        log.info(this.getClass().getName() + ".deleteOneQuiz end!");
+
+        return "/redirect";
+    }
+
+    @RequestMapping(value = "updateUserQuizPage.do")
+    public String updateUserQuizPage(HttpServletRequest request, HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateUserQuizPage start!");
+
+        try {
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+            String user_email = EncryptUtil.encAES128CBC(SS_USER_EMAIL);
+
+            log.info("quiz_title : " + quiz_title);
+            log.info("user_email : " + SS_USER_EMAIL);
+
+            List<String> rUserQuizContList = quizService.getUserQuizContList(user_email, quiz_title);
+
+            model.addAttribute("rUserQuizContList", rUserQuizContList);
+            model.addAttribute("quiz_title", quiz_title);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        log.info(this.getClass().getName() + ".updateUserQuizPage end!");
+
+        return "/quiz/quizCreate";
+    }
+
+    @RequestMapping(value = "updateUserQuiz.do", method = RequestMethod.POST)
+    public String updateUserQuiz(HttpServletRequest request, HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateUserQuiz start!");
+
+        String msg = "";
+        String url = "/userQuizList.do";
+
+        try {
+
+            String strQuizList = CmmUtil.nvl(request.getParameter("quizListHiddenInput"));
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+
+            log.info("strQuizList : " + strQuizList);
+            log.info("quiz_title : " + quiz_title);
+            log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
+
+            Map<String, String> pMap = new HashMap<>();
+            pMap.put("user_email", SS_USER_EMAIL);
+            pMap.put("strQuizList", strQuizList);
+            pMap.put("quiz_title", quiz_title);
+
+            int res = quizService.updateUserQuiz(pMap);
+
+            if (res > 0) {
+                msg = "내 퀴즈 업데이트 성공!";
+            } else {
+                msg = "내 퀴즈 업데이트 실패!";
+            }
+
+        } catch (Exception e) {
+            msg = "서버 오류입니다.";
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
+
+        log.info(this.getClass().getName() + ".updateUserQuiz end!");
+
+        return "/redirect";
     }
 
 }

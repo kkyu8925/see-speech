@@ -4,9 +4,14 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     List<Map<String, String>> rQuizList = ((List<Map<String, String>>) request.getAttribute("rQuizList"));
+    List<String> rUserQuizTitleList = ((List<String>) request.getAttribute("rUserQuizTitleList"));
 
     if (rQuizList == null) {
         rQuizList = new ArrayList<>();
+    }
+
+    if (rUserQuizTitleList == null) {
+        rUserQuizTitleList = new ArrayList<>();
     }
 
 %>
@@ -65,18 +70,21 @@
             <div class="courses-actives">
 
                 <%
+                    int i = 0;
                     for (Map<String, String> rMap : rQuizList) {
-                        if (rMap.get("quizSort").equals("0")) {
+                        if (rMap.get("quiz_sort").equals("0")) {
+                            i++;
                 %>
 
                 <!-- Single -->
                 <div class="properties pb-20">
                     <div class="properties__card">
                         <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured1.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured<%=(i%6)+1%>.png"
+                                 alt="">
                         </div>
                         <div class="properties__caption">
-                            <h3><%=rMap.get("quizTitle") %>
+                            <h3><%=rMap.get("quiz_title") %>
                             </h3>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
                                 <div class="restaurant-name">
@@ -88,7 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="listPage.do?quizTitle=<%=rMap.get("quizTitle") %>&quizSort=<%=rMap.get("quizSort") %>"
+                            <a href="listPage.do?quizTitle=<%=rMap.get("quiz_title") %>&quizSort=<%=rMap.get("quiz_sort") %>"
                                class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -120,18 +128,21 @@
             <div class="courses-actives">
 
                 <%
+                    int j = 0;
                     for (Map<String, String> rMap : rQuizList) {
-                        if (rMap.get("quizSort").equals("1")) {
+                        if (rMap.get("quiz_sort").equals("1")) {
+                            j++;
                 %>
 
                 <!-- Single -->
                 <div class="properties pb-20">
                     <div class="properties__card">
                         <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured1.png" alt="">
+                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured<%=(j%6)+1%>.png"
+                                 alt="">
                         </div>
                         <div class="properties__caption">
-                            <h3><%=rMap.get("quizTitle") %>
+                            <h3><%=rMap.get("quiz_title") %>
                             </h3>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
                                 <div class="restaurant-name">
@@ -143,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="listPage.do?quizTitle=<%=rMap.get("quizTitle") %>&quizSort=<%=rMap.get("quizSort") %>"
+                            <a href="listPage.do?quizTitle=<%=rMap.get("quiz_title") %>&quizSort=<%=rMap.get("quiz_sort") %>"
                                class="border-btn border-btn2 cursor_pointer">학습하기</a>
                         </div>
                     </div>
@@ -173,18 +184,30 @@
             </div>
             <div class="row">
 
-<%--                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer" onclick="location.href='listPage.do'">--%>
-<%--                    <div class="single-topic text-center mb-30">--%>
-<%--                        <div class="topic-img">--%>
-<%--                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic1.png" alt="">--%>
-<%--                            <div class="topic-content-box">--%>
-<%--                                <div class="topic-content">--%>
-<%--                                    <h3 class="topic-content-style">Programing</h3>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <%
+                    int userQuizTitleIdx = 0;
+                    for (String userQuizTitle : rUserQuizTitleList) {
+                        userQuizTitleIdx++;
+                        if (userQuizTitleIdx == 9) {
+                            break;
+                        }
+                %>
+                <div class="col-lg-3 col-md-4 col-sm-6 cursor_pointer"
+                     onclick="location.href='listPage.do?quizTitle=<%=userQuizTitle%>&quizSort=2'">
+                    <div class="single-topic text-center mb-30">
+                        <div class="topic-img">
+                            <img src="${pageContext.request.contextPath}/resources/img/gallery/topic<%=(userQuizTitleIdx%8)+1%>.png"
+                                 alt="">
+                            <div class="topic-content-box">
+                                <div class="topic-content">
+                                    <h3 class="topic-content-style"><%=userQuizTitle%>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }%>
 
             </div>
             <div class="row justify-content-center">

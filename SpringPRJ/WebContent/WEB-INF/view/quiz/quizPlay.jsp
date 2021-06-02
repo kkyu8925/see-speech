@@ -45,6 +45,20 @@
         .context_box {
             justify-content: center;
         }
+
+        .right_loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999999;
+        }
+
+        .right_loader .right_loader_icon i {
+            color: aquamarine;
+        }
+
     </style>
 </head>
 
@@ -52,6 +66,18 @@
 <!-- Preloader Start -->
 <%@include file="/WEB-INF/view/inc/preloader.jsp" %>
 <!-- Preloader end -->
+
+<!-- right loader start-->
+<div id="right-loader-active" style="display: none">
+    <div class="right_loader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="right_loader_icon pere-text">
+                <i class="far fa-check-circle fa-3x"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- right loader end-->
 
 <!-- header start -->
 <%@include file="/WEB-INF/view/inc/header.jsp" %>
@@ -137,9 +163,18 @@
                     final_transcript += event.results[i][0].transcript;
                 }
             }
+            final_transcript = final_transcript.trim();
             console.log("final :" + final_transcript);
             $("#sttBox").text(final_transcript);
 
+            let _quiz = document.getElementById("quizBox").innerHTML;
+            if (_quiz === final_transcript) {
+                $('#right-loader-active').show();
+                $('#right-loader-active').delay(450).fadeOut('slow', function () {
+                    nextQuizHandler();
+                });
+
+            }
         };
 
         // Tell KITT to use annyang
@@ -184,6 +219,7 @@
         }
 
     }
+
 </script>
 
 </body>

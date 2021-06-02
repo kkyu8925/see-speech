@@ -1,4 +1,13 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    List<String> rUserQuizTitleList = (List<String>) request.getAttribute("rUserQuizTitleList");
+
+    if (rUserQuizTitleList == null) {
+        rUserQuizTitleList = new ArrayList<>();
+    }
+%>
 <html>
 <head>
     <!-- head Start -->
@@ -20,10 +29,19 @@
             color: white;
             cursor: pointer;
         }
+
+        .quiz_title {
+            text-align: center;
+        }
     </style>
     <script type="text/javascript">
-        function deleteBoxClickHandler() {
-            confirm("삭제 하시겠습니까?")
+        function deleteButtonClickHandler(e) {
+            let flag = confirm("삭제 하시겠습니까?");
+            let quiz_title = e.parentNode.querySelector(".quiz_title").innerHTML;
+
+            if (flag) {
+                location.href = "/deleteOneQuiz.do?quiz_title=" + quiz_title;
+            }
         }
     </script>
 </head>
@@ -53,88 +71,33 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
+                <%
+                    int i = 0;
+                    for (String quizTitle : rUserQuizTitleList) {
+                        i++;
+                %>
                 <div class="col-lg-4">
                     <div class="properties properties2 mb-30">
-                        <div class="delete_box" onclick="deleteBoxClickHandler()">X</div>
+                        <div class="delete_box" onclick="deleteButtonClickHandler(this)">X</div>
                         <div class="properties__card">
                             <div class="properties__img overlay1">
-                                <img src="${pageContext.request.contextPath}/resources/img/gallery/featured1.png"
+                                <img src="${pageContext.request.contextPath}/resources/img/gallery/featured<%=(i%6)+1%>.png"
                                      alt="">
                             </div>
                             <div class="properties__caption">
-                                <h3 style="text-align: center;">문제1</h3>
+                                <h3 class="quiz_title"><%=quizTitle%>
+                                </h3>
                                 <div class="properties__footer d-flex justify-content-between align-items-center"></div>
 
-                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                                <a href="${pageContext.request.contextPath}/updateUserQuizPage.do?quiz_title=<%=quizTitle%>" class="border-btn border-btn2 cursor_pointer">수정하기</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="properties properties2 mb-30">
-                        <div class="delete_box" onclick="deleteBoxClickHandler()">X</div>
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <img src="${pageContext.request.contextPath}/resources/img/gallery/featured2.png"
-                                     alt="">
-                            </div>
-                            <div class="properties__caption">
-                                <h3 style="text-align: center;">문제2</h3>
-                                <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="properties properties2 mb-30">
-                        <div class="delete_box" onclick="deleteBoxClickHandler()">X</div>
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <img src="${pageContext.request.contextPath}/resources/img/gallery/featured3.png"
-                                     alt="">
-                            </div>
-                            <div class="properties__caption">
-                                <h3 style="text-align: center;">문제3</h3>
-                                <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="properties properties2 mb-30">
-                        <div class="delete_box" onclick="deleteBoxClickHandler()">X</div>
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <img src="${pageContext.request.contextPath}/resources/img/gallery/featured4.png"
-                                     alt="">
-                            </div>
-                            <div class="properties__caption">
-                                <h3 style="text-align: center;">문제4</h3>
-                                <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="properties properties2 mb-30">
-                        <div class="delete_box" onclick="deleteBoxClickHandler()">X</div>
-                        <div class="properties__card">
-                            <div class="properties__img overlay1">
-                                <img src="${pageContext.request.contextPath}/resources/img/gallery/featured5.png"
-                                     alt="">
-                            </div>
-                            <div class="properties__caption">
-                                <h3 style="text-align: center;">문제5</h3>
-                                <div class="properties__footer d-flex justify-content-between align-items-center"></div>
-                                <a href="create.do" class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <% }%>
+
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">

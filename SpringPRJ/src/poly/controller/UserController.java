@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import poly.dto.MailDTO;
 import poly.service.IMailService;
+import poly.service.IQuizService;
 import poly.service.IUserService;
 import poly.util.CmmUtil;
 import poly.util.EncryptUtil;
 
 import javax.annotation.Resource;
-import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -26,6 +26,9 @@ public class UserController {
 
     @Resource(name = "UserService")
     private IUserService userService;
+
+    @Resource(name = "QuizService")
+    private IQuizService quizService;
 
     @Resource(name = "MailService")
     private IMailService mailService;
@@ -60,14 +63,32 @@ public class UserController {
         return "/login/register";
     }
 
+    @RequestMapping(value = "logout.do")
+    public String logout(HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".logout start");
+
+        // session 비움
+        session.invalidate();
+
+        // 결과 메세지 전달하기
+        model.addAttribute("msg", "로그아웃 성공");
+        model.addAttribute("url", "/index.do");
+
+        log.info(this.getClass().getName() + ".logout end");
+
+        return "/redirect";
+    }
+
     @RequestMapping(value = "userPage.do")
     public String userPage(HttpSession session, ModelMap model) throws Exception {
 
         log.info(this.getClass().getName() + ".userPage start!");
 
-        String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+        String user_email = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+        log.info("user_email : " + user_email);
 
-        if (SS_USER_EMAIL.equals("")) {
+        if (user_email.equals("")) {
             model.addAttribute("msg", "로그인이 필요합니다.");
             model.addAttribute("url", "/loginPage.do");
             return "/redirect";
@@ -75,7 +96,7 @@ public class UserController {
 
         log.info(this.getClass().getName() + ".userPage end!");
 
-        return "user/userPage";
+        return "/user/userPage";
     }
 
     @RequestMapping(value = "insertUser.do", method = RequestMethod.POST)
@@ -179,7 +200,7 @@ public class UserController {
                 String res_user_email = EncryptUtil.decAES128CBC(rMap.get("user_email"));
                 String res_user_name = rMap.get("user_name");
 
-                msg = "로그인에 성공했습니다!";
+                msg = "환영합니다. " + res_user_name + "님";
                 url = "/index.do";
 
                 session.setAttribute("SS_USER_EMAIL", res_user_email);
@@ -202,30 +223,12 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "logout.do")
-    public String logout(HttpSession session, ModelMap model) throws Exception {
-
-        log.info(this.getClass().getName() + ".logout start");
-
-        // session 비움
-        session.invalidate();
-
-        // 결과 메세지 전달하기
-        model.addAttribute("msg", "로그아웃 성공");
-        model.addAttribute("url", "/index.do");
-
-        log.info(this.getClass().getName() + ".logout end");
-
-        return "/redirect";
-    }
-
     @RequestMapping(value = "updatePwPage.do")
     public String updatePwPage(HttpSession session, ModelMap model) throws Exception {
 
         log.info(this.getClass().getName() + ".updatePwPage start");
 
         String user_email = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
-
         log.info("user_email : " + user_email);
 
         if (user_email.equals("")) {
@@ -376,6 +379,8 @@ public class UserController {
             pMap.put("user_name", user_name);
 
             int res = userService.deleteUser(pMap);
+            int quizDeleteRes = quizService.deleteUserQuiz(pMap);
+            log.info("quizDeleteRes : " + quizDeleteRes);
 
             if (res == 1) {
                 msg = "성공적으로 계정이 삭제 되었습니다.";

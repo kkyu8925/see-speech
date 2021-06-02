@@ -12,6 +12,7 @@ import java.util.Map;
 public class UserService implements IUserService {
 
     private final Logger log = Logger.getLogger(this.getClass());
+
     // mongoDB collection name
     private final String colNm = "UserCollection";
 

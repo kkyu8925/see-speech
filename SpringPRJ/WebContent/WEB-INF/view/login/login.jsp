@@ -5,7 +5,6 @@
     <%@include file="/WEB-INF/view/inc/loginhead.jsp" %>
     <!-- login head end -->
 </head>
-
 <body>
 <!-- Preloader Start -->
 <%@include file="/WEB-INF/view/inc/preloader.jsp" %>
@@ -40,17 +39,19 @@
             </div>
 
             <div class="flex-c p-b-112" style="padding-bottom: 90px;">
-                <!-- <a href="#" class="login100-social-item">
-                    <i class="fa fa-facebook-f"></i>
-                </a> -->
 
-                <a href="#" class="login100-social-item">
-                    <img src="${pageContext.request.contextPath}/resources/img/icon/icon-google.png" alt="GOOGLE">
-                </a>
+                <%--                <a href="#" class="login100-social-item" onclick="gAuth.signIn().then(function (){--%>
+                <%--                    console.log('click login');--%>
+                <%--                });">--%>
+                <%--                    <img class="g-signin2" data-onsuccess="onSignIn"--%>
+                <%--                         src="${pageContext.request.contextPath}/resources/img/icon/icon-google.png" alt="GOOGLE">--%>
+                <%--                </a>--%>
+                <div id="googleBtn" class="g-signin2" data-onsuccess="onSignIn"></div>
+
             </div>
 
             <div class="text-center">
-                <a href="register.do" class="txt2 hov1">
+                <a href="register.do" id="loginBtn" class="txt2 hov1">
                     Sign Up
                 </a>
                 <div>/</div>
