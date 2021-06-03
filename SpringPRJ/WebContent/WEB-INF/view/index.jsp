@@ -39,6 +39,10 @@
         .chatBox {
             margin-bottom: 40px;
         }
+
+        .properties__caption h3 {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -87,14 +91,6 @@
                             <h3><%=rMap.get("quiz_title") %>
                             </h3>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
                             </div>
                             <a href="listPage.do?quizTitle=<%=rMap.get("quiz_title") %>&quizSort=<%=rMap.get("quiz_sort") %>"
                                class="border-btn border-btn2 cursor_pointer">학습하기</a>
@@ -145,14 +141,6 @@
                             <h3><%=rMap.get("quiz_title") %>
                             </h3>
                             <div class="properties__footer d-flex justify-content-between align-items-center">
-                                <div class="restaurant-name">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
                             </div>
                             <a href="listPage.do?quizTitle=<%=rMap.get("quiz_title") %>&quizSort=<%=rMap.get("quiz_sort") %>"
                                class="border-btn border-btn2 cursor_pointer">학습하기</a>
