@@ -50,7 +50,7 @@ public class ChatController {
 
         HttpResponse<String> response = Unirest.post("https://wsapi.simsimi.com/190410/talk")
                 .header("content-type", "application/json")
-                .header("x-api-key", "TOi1fvhyLPGqs0sg9w-4uQA6KyL8FYeGF8wnaD9R")
+                .header("x-api-key", "Rf~fwJs0nUX5P40r4vdULyiJgB~DEp.x2K~TOKP~")
                 .header("cache-control", "no-cache")
                 .header("postman-token", "42bb65e8-40e3-e839-70dc-a2ce3ea305a2")
                 .body("{\r\n            \"utext\": \"" + msg + "\", \r\n            \"lang\": \"ko\" \r\n     }")
