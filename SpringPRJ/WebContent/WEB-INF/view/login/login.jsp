@@ -4,6 +4,40 @@
     <!-- login head Start -->
     <%@include file="/WEB-INF/view/inc/loginhead.jsp" %>
     <!-- login head end -->
+
+    <script>
+        function googleLoginInit() {
+            gapi.load('auth2', function () {
+                /* Ready. Make a call to gapi.auth2.init or some other API */
+                let gAuth = gapi.auth2.init({
+                    client_id: '672099978957-s43vd5sfmed6nev135tr6huc4rvcege9.apps.googleusercontent.com'
+                });
+
+                gAuth.then(function () {
+                    gAuth.signIn().then(function () {
+                        let profile = gAuth.currentUser.get().getBasicProfile();
+
+                        $.ajax({
+                            url: '/login/loginGoogleForAJAX.do',
+                            type: 'post',
+                            data: {
+                                "id" : profile.getId(),
+                                "username": profile.getName(),
+                                "email": profile.getEmail()
+                            },
+                            success: function () {
+                                location.href="/index.do";
+                            }
+                        });
+                    });
+
+                }, function (error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                })
+            });
+        }
+    </script>
+
 </head>
 <body>
 <!-- Preloader Start -->
@@ -40,13 +74,10 @@
 
             <div class="flex-c p-b-112" style="padding-bottom: 90px;">
 
-                <%--                <a href="#" class="login100-social-item" onclick="gAuth.signIn().then(function (){--%>
-                <%--                    console.log('click login');--%>
-                <%--                });">--%>
-                <%--                    <img class="g-signin2" data-onsuccess="onSignIn"--%>
-                <%--                         src="${pageContext.request.contextPath}/resources/img/icon/icon-google.png" alt="GOOGLE">--%>
-                <%--                </a>--%>
-                <div id="googleBtn" class="g-signin2" data-onsuccess="onSignIn"></div>
+                <a href="#" id="google_login" class="login100-social-item" onclick="googleLoginInit()">
+                    <img src="${pageContext.request.contextPath}/resources/img/icon/icon-google.png" alt="GOOGLE">
+                </a>
+
 
             </div>
 
@@ -66,6 +97,8 @@
 <!-- login js Start -->
 <%@include file="/WEB-INF/view/inc/loginjs.jsp" %>
 <!-- login js end -->
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>
 </html>

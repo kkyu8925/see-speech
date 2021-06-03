@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%
+    String SS_USER_TYPE = CmmUtil.nvl((String) session.getAttribute("SS_USER_TYPE"), "0");
+%>
 <html>
 <head>
     <!-- head Start -->
@@ -71,11 +73,18 @@
             </div>
 
             <div class="userInfo_buttonBox">
+                <% if (SS_USER_TYPE.equals("0")) { %>
                 <button onclick="location.href='/updatePwPage.do'" class="boxed-btn form__button update_pwButton">암호수정
                 </button>
                 <button onclick="deleteUser()" class="boxed-btn form__button delete_userButton">
                     계정삭제
                 </button>
+                <% } else { %>
+                <button onclick="deleteUser()" class="boxed-btn form__button delete_userButton">
+                    계정삭제
+                </button>
+                <% } %>
+
             </div>
         </div>
 

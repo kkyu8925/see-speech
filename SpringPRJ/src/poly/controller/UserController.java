@@ -406,4 +406,56 @@ public class UserController {
         return "/redirect";
     }
 
+    @RequestMapping(value = "/login/loginGoogleForAJAX.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> loginGoogleForAJAX(HttpServletRequest request, HttpSession session) throws Exception {
+
+        log.info(this.getClass().getName() + ".loginGoogleForAJAX start!");
+
+        Map<String, String> rMap = new HashMap<>();
+
+        try {
+            String user_email = CmmUtil.nvl(request.getParameter("email"));
+            String user_name = CmmUtil.nvl(request.getParameter("username"));
+            String user_id = CmmUtil.nvl(request.getParameter("id"));
+
+            log.info("user_email : " + user_email);
+            log.info("user_name : " + user_name);
+            log.info("user_id : " + user_id);
+
+            rMap = userService.getUserExistForAJAX(EncryptUtil.encAES128CBC(user_email));
+
+            String userExistRes = CmmUtil.nvl(rMap.get("res"), "null");
+            log.info("userExist res : " + userExistRes);
+
+            if (userExistRes.equals("exist")) {
+                session.setAttribute("SS_USER_EMAIL", user_email);
+                session.setAttribute("SS_USER_NAME", user_name);
+                session.setAttribute("SS_USER_TYPE", "google");
+
+            } else if (userExistRes.equals("null")) {
+                Map<String, Object> pMap = new HashMap<>();
+                pMap.put("user_email", EncryptUtil.encAES128CBC(user_email));
+                pMap.put("user_name", user_name);
+                pMap.put("user_pw", EncryptUtil.encHashSHA256(user_id));
+
+                userService.insertUser(pMap);
+
+                session.setAttribute("SS_USER_EMAIL", user_email);
+                session.setAttribute("SS_USER_NAME", user_name);
+                session.setAttribute("SS_USER_TYPE", "google");
+            }
+
+        } catch (Exception e) {
+            rMap.put("res", "exception");
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+
+        log.info(this.getClass().getName() + ".loginGoogleForAJAX end!");
+
+        return rMap;
+    }
+
 }
