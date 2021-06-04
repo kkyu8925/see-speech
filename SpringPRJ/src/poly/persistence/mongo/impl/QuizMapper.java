@@ -19,10 +19,14 @@ import java.util.function.Consumer;
 @Component("QuizMapper")
 public class QuizMapper extends AbstractMongoDBCommon implements IQuizMapper {
 
-    @Autowired
-    private MongoTemplate mongodb;
+    private final MongoTemplate mongodb;
 
     private final Logger log = Logger.getLogger(this.getClass());
+
+    @Autowired
+    public QuizMapper(MongoTemplate mongodb) {
+        this.mongodb = mongodb;
+    }
 
     @Override
     public List<Map<String, String>> getQuizList(String colNm) throws Exception {

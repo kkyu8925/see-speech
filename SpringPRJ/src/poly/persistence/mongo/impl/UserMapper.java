@@ -18,10 +18,14 @@ import java.util.function.Consumer;
 @Component("UserMapper")
 public class UserMapper extends AbstractMongoDBCommon implements IUserMapper {
 
-    @Autowired
-    private MongoTemplate mongodb;
+    private final MongoTemplate mongodb;
 
     private final Logger log = Logger.getLogger(this.getClass());
+
+    @Autowired
+    public UserMapper(MongoTemplate mongodb) {
+        this.mongodb = mongodb;
+    }
 
     @Override
     public void insertUser(String colNm, Map<String, Object> pMap) throws Exception {
