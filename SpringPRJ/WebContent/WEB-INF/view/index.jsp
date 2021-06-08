@@ -5,8 +5,8 @@
 <%
     String SS_USER_TYPE = CmmUtil.nvl((String) session.getAttribute("SS_USER_TYPE"));
 
-    List<Map<String, String>> rQuizList = ((List<Map<String, String>>) request.getAttribute("rQuizList"));
-    List<String> rUserQuizTitleList = ((List<String>) request.getAttribute("rUserQuizTitleList"));
+    List<Map<String, String>> rQuizList = (List<Map<String, String>>) request.getAttribute("rQuizList");
+    List<String> rUserQuizTitleList = (List<String>) request.getAttribute("rUserQuizTitleList");
 
     if (rQuizList == null) {
         rQuizList = new ArrayList<>();
@@ -23,29 +23,7 @@
     <%@include file="/WEB-INF/view/inc/head.jsp" %>
     <!-- head end -->
 
-    <style>
-        .topic-content-style {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        .apiButton {
-            margin-bottom: 0;
-        }
-
-        .apiButton:hover {
-            background-color: #f9f9ff;
-        }
-
-        .chatBox {
-            margin-bottom: 40px;
-        }
-
-        .properties__caption h3 {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/page/index.css">
 </head>
 
 <body>
@@ -82,24 +60,9 @@
                             i++;
                 %>
 
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured<%=(i%6)+1%>.png"
-                                 alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3><%=rMap.get("quiz_title") %>
-                            </h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                            </div>
-                            <a href="listPage.do?quizTitle=<%=rMap.get("quiz_title") %>&quizSort=<%=rMap.get("quiz_sort") %>"
-                               class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
+                <!-- Single  start -->
+                <%@include file="/WEB-INF/view/inc/indexSingle.jsp" %>
+                <!-- Single end -->
 
                 <%
                         }
@@ -126,30 +89,15 @@
             <div class="courses-actives">
 
                 <%
-                    int j = 0;
+                    i = 0;
                     for (Map<String, String> rMap : rQuizList) {
                         if (rMap.get("quiz_sort").equals("1")) {
-                            j++;
+                            i++;
                 %>
 
-                <!-- Single -->
-                <div class="properties pb-20">
-                    <div class="properties__card">
-                        <div class="properties__img overlay1">
-                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured<%=(j%6)+1%>.png"
-                                 alt="">
-                        </div>
-                        <div class="properties__caption">
-                            <h3><%=rMap.get("quiz_title") %>
-                            </h3>
-                            <div class="properties__footer d-flex justify-content-between align-items-center">
-                            </div>
-                            <a href="listPage.do?quizTitle=<%=rMap.get("quiz_title") %>&quizSort=<%=rMap.get("quiz_sort") %>"
-                               class="border-btn border-btn2 cursor_pointer">학습하기</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single -->
+                <!-- Single  start -->
+                <%@include file="/WEB-INF/view/inc/indexSingle.jsp" %>
+                <!-- Single end -->
 
                 <%
                         }
@@ -163,13 +111,15 @@
     <!-- 문장 학습하기 end -->
 
     <% if (SS_USER_TYPE.equals("ADMIN")) { %>
-
     <div class="row justify-content-center">
         <button class="boxed-btn" style="font-weight: bold;margin-top: 10px;"
                 onclick="location.href='create.do'">생성하기
         </button>
-    </div>
+        <button class="boxed-btn admin_deleteBtn" style="font-weight: bold;margin-top: 10px;margin-left: 10px;"
+                onclick="location.href='adminQuizList.do'">삭제하기
+        </button>
 
+    </div>
     <% } else { %>
     <!--? top subjects Area Start -->
     <div class="topic-area section-padding40">
@@ -181,6 +131,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
 
                 <%
@@ -209,6 +160,7 @@
                 <% }%>
 
             </div>
+
             <div class="row justify-content-center">
                 <button class="boxed-btn" style="font-weight: bold;margin-top: 10px;"
                         onclick="location.href='userQuizList.do'">전체보기
@@ -217,7 +169,6 @@
         </div>
     </div>
     <!-- top subjects End -->
-
     <% } %>
 
 

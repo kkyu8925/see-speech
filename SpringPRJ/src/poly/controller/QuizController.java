@@ -173,15 +173,34 @@ public class QuizController {
             log.info("quiz_title : " + quiz_title);
             log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
 
-            Map<String, String> pMap = new HashMap<>();
-            pMap.put("user_email", SS_USER_EMAIL);
-            pMap.put("strQuizList", strQuizList);
-            pMap.put("quiz_title", quiz_title);
+            if (SS_USER_EMAIL.equals("admin@email.com")) {
 
-            quizService.insertUserQuiz(pMap);
+                String quiz_sort = CmmUtil.nvl(request.getParameter("quiz_sort"));
+                log.info("quiz_sort : " + quiz_sort);
 
-            model.addAttribute("msg", "내 퀴즈 저장 성공!");
-            model.addAttribute("url", "/userQuizList.do");
+                Map<String, String> pMap = new HashMap<>();
+                pMap.put("quiz_sort", quiz_sort);
+                pMap.put("strQuizList", strQuizList);
+                pMap.put("quiz_title", quiz_title);
+
+                quizService.insertAdminQuiz(pMap);
+
+                model.addAttribute("msg", "관리자 퀴즈 저장 성공!");
+                model.addAttribute("url", "/index.do");
+
+            } else {
+                Map<String, String> pMap = new HashMap<>();
+                pMap.put("user_email", SS_USER_EMAIL);
+                pMap.put("strQuizList", strQuizList);
+                pMap.put("quiz_title", quiz_title);
+
+                quizService.insertUserQuiz(pMap);
+
+                model.addAttribute("msg", "내 퀴즈 저장 성공!");
+                model.addAttribute("url", "/userQuizList.do");
+
+            }
+
 
         } catch (Exception e) {
             log.info(e.toString());
@@ -309,25 +328,48 @@ public class QuizController {
 
         try {
 
+            String SS_USER_TYPE = CmmUtil.nvl((String) session.getAttribute("SS_USER_TYPE"));
+
             String strQuizList = CmmUtil.nvl(request.getParameter("quizListHiddenInput"));
             String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
-            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
 
             log.info("strQuizList : " + strQuizList);
             log.info("quiz_title : " + quiz_title);
-            log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
 
-            Map<String, String> pMap = new HashMap<>();
-            pMap.put("user_email", SS_USER_EMAIL);
-            pMap.put("strQuizList", strQuizList);
-            pMap.put("quiz_title", quiz_title);
+            if (SS_USER_TYPE.equals("ADMIN")) {
 
-            int res = quizService.updateUserQuiz(pMap);
+                Map<String, String> pMap = new HashMap<>();
+                pMap.put("strQuizList", strQuizList);
+                pMap.put("quiz_title", quiz_title);
 
-            if (res > 0) {
-                msg = "내 퀴즈 업데이트 성공!";
+                int res = quizService.updateAdminQuiz(pMap);
+
+                if (res > 0) {
+                    msg = "관리자 퀴즈 업데이트 성공!";
+                    url = "/adminQuizList.do";
+                } else {
+                    msg = "관리자 퀴즈 업데이트 실패!";
+                    url = "/adminQuizList.do";
+                }
+
             } else {
-                msg = "내 퀴즈 업데이트 실패!";
+
+                String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+
+                log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
+
+                Map<String, String> pMap = new HashMap<>();
+                pMap.put("user_email", SS_USER_EMAIL);
+                pMap.put("strQuizList", strQuizList);
+                pMap.put("quiz_title", quiz_title);
+
+                int res = quizService.updateUserQuiz(pMap);
+
+                if (res > 0) {
+                    msg = "내 퀴즈 업데이트 성공!";
+                } else {
+                    msg = "내 퀴즈 업데이트 실패!";
+                }
             }
 
         } catch (Exception e) {
@@ -342,6 +384,101 @@ public class QuizController {
         log.info(this.getClass().getName() + ".updateUserQuiz end!");
 
         return "/redirect";
+    }
+
+    @RequestMapping(value = "adminQuizList.do")
+    public String adminQuizList(HttpSession session, ModelMap model) {
+
+        log.info(this.getClass().getName() + ".adminQuizList start!");
+
+        try {
+
+            String SS_USER_EMAIL = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+            log.info("SS_USER_EMAIL : " + SS_USER_EMAIL);
+
+            if (SS_USER_EMAIL.equals("")) {
+                model.addAttribute("msg", "로그인이 필요합니다.");
+                model.addAttribute("url", "/loginPage.do");
+                return "/redirect";
+            }
+
+            List<Map<String, String>> rQuizList = quizService.getQuizList();
+
+            model.addAttribute("rQuizList", rQuizList);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        log.info(this.getClass().getName() + ".adminQuizList end!");
+
+        return "/user/userQuizList";
+    }
+
+    @RequestMapping(value = "deleteOneAdminQuiz.do")
+    public String deleteOneAdminQuiz(HttpServletRequest request, HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".deleteOneAdminQuiz start!");
+
+        String url = "/adminQuizList.do";
+        String msg = "";
+
+        try {
+
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+
+            log.info("quiz_title : " + quiz_title);
+
+            Map<String, Object> pMap = new HashMap<>();
+            pMap.put("quiz_title", quiz_title);
+
+            int res = quizService.deleteOneAdminQuiz(pMap);
+
+            if (res == 1) {
+                msg = "퀴즈 삭제 성공";
+            } else {
+                msg = "퀴즈 삭제 실패";
+            }
+
+        } catch (Exception e) {
+            msg = "서버 오류 입니다.";
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
+
+        log.info(this.getClass().getName() + ".deleteOneAdminQuiz end!");
+
+        return "/redirect";
+    }
+
+    @RequestMapping(value = "updateAdminQuizPage.do")
+    public String updateAdminQuizPage(HttpServletRequest request, HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateAdminQuizPage start!");
+
+        try {
+            String quiz_title = CmmUtil.nvl(request.getParameter("quiz_title"));
+            String quiz_sort = CmmUtil.nvl(request.getParameter("quiz_sort"));
+
+            log.info("quiz_title : " + quiz_title);
+
+            List<String> rUserQuizContList = quizService.getQuizContList(quiz_title, quiz_sort);
+
+            model.addAttribute("rUserQuizContList", rUserQuizContList);
+            model.addAttribute("quiz_title", quiz_title);
+
+        } catch (Exception e) {
+            log.info(e.toString());
+            e.printStackTrace();
+        }
+
+        log.info(this.getClass().getName() + ".updateAdminQuizPage end!");
+
+        return "/quiz/quizCreate";
     }
 
 }

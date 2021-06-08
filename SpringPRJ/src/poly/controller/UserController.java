@@ -205,6 +205,11 @@ public class UserController {
 
                 session.setAttribute("SS_USER_EMAIL", res_user_email);
                 session.setAttribute("SS_USER_NAME", res_user_name);
+
+                if (res_user_email.equals("admin@email.com")) {
+                    session.setAttribute("SS_USER_TYPE", "ADMIN");
+                    log.info("ADMIN LOGIN");
+                }
             }
 
         } catch (Exception e) {

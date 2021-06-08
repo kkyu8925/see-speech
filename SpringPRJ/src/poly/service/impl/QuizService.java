@@ -144,4 +144,39 @@ public class QuizService implements IQuizService {
 
         return res;
     }
+
+    @Override
+    public void insertAdminQuiz(Map<String, String> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".insertAdminQuiz start!");
+
+        quizMapper.insertAdminQuiz(colNm, pMap);
+
+        log.info(this.getClass().getName() + ".insertAdminQuiz end!");
+
+    }
+
+    @Override
+    public int deleteOneAdminQuiz(Map<String, Object> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".deleteOneAdminQuiz start!");
+
+        int res = quizMapper.deleteOneAdminQuiz(colNm, pMap);
+
+        log.info(this.getClass().getName() + ".deleteOneAdminQuiz end!");
+
+        return res;
+    }
+
+    @Override
+    public int updateAdminQuiz(Map<String, String> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateAdminQuiz start!");
+
+        int res = quizMapper.updateAdminQuiz(colNm, pMap);
+
+        log.info(this.getClass().getName() + ".updateAdminQuiz end!");
+
+        return res;
+    }
 }

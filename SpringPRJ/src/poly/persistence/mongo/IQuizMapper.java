@@ -30,4 +30,13 @@ public interface IQuizMapper {
 
     // 퀴즈 업데이트
     int updateUserQuiz(String userQuizColNm, Map<String, String> pMap) throws Exception;
+    
+    // 관리자 퀴즈 생성
+    void insertAdminQuiz(String colNm, Map<String, String> pMap) throws Exception;
+    
+    // 관리자 퀴즈 삭제
+    int deleteOneAdminQuiz(String colNm, Map<String, Object> pMap) throws Exception;
+
+    // 관리자 퀴즈 업데이트
+    int updateAdminQuiz(String colNm, Map<String, String> pMap) throws Exception;
 }

@@ -64,7 +64,7 @@
 
             <div class="blog-author">
                 <div class="media align-items-center">
-                    <img src="${pageContext.request.contextPath}/resources/img/chat/basicuser.png" alt="">
+                    <img src="${pageContext.request.contextPath}/resources/img/chat/basicUser.png" alt="">
                     <div class="media-body">
                         <h4>${SS_USER_EMAIL} (${SS_USER_NAME})
                         </h4>
@@ -73,13 +73,13 @@
             </div>
 
             <div class="userInfo_buttonBox">
-                <% if (SS_USER_TYPE.equals("0")) { %>
-                <button onclick="location.href='/updatePwPage.do'" class="boxed-btn form__button update_pwButton">암호수정
-                </button>
+                <% if (SS_USER_TYPE.equals("google")) { %>
                 <button onclick="deleteUser()" class="boxed-btn form__button delete_userButton">
                     계정삭제
                 </button>
                 <% } else { %>
+                <button onclick="location.href='/updatePwPage.do'" class="boxed-btn form__button update_pwButton">암호수정
+                </button>
                 <button onclick="deleteUser()" class="boxed-btn form__button delete_userButton">
                     계정삭제
                 </button>
@@ -152,8 +152,6 @@
             location.href = "/deleteUser.do";
         }
     }
-
-
 </script>
 
 </body>

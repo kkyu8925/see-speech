@@ -45,13 +45,11 @@ public class QuizMapper extends AbstractMongoDBCommon implements IQuizMapper {
 
             String quizTitle = CmmUtil.nvl(document.getString("quiz_title"));
             String quizSort = CmmUtil.nvl(document.getString("quiz_sort"));
-            String quizLevel = CmmUtil.nvl(document.getString("quiz_level"));
 
             Map<String, String> rMap = new LinkedHashMap<>();
 
             rMap.put("quiz_title", quizTitle);
             rMap.put("quiz_sort", quizSort);
-            rMap.put("quiz_level", quizLevel);
 
             // 레코드 결과를 List에 저장하기
             rQuizList.add(rMap);
@@ -281,6 +279,85 @@ public class QuizMapper extends AbstractMongoDBCommon implements IQuizMapper {
         log.info("updateResults : " + updateResults);
 
         log.info(this.getClass().getName() + ".updateUserQuiz end!");
+
+        return res;
+    }
+
+    @Override
+    public void insertAdminQuiz(String colNm, Map<String, String> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".insertAdminQuiz start!");
+
+        String quiz_sort = pMap.get("quiz_sort");
+        String quiz_title = pMap.get("quiz_title");
+        String strQuizList = pMap.get("strQuizList");
+
+        List<String> quiz_cont = Arrays.asList(strQuizList.split(","));
+
+        log.info(this.getClass().getName() + ".quiz_sort : " + quiz_sort);
+        log.info(this.getClass().getName() + ".quiz_title : " + quiz_title);
+        log.info(this.getClass().getName() + ".strQuizList : " + strQuizList);
+        log.info(this.getClass().getName() + ".quiz_cont : " + quiz_cont);
+
+        Map<String, Object> rMap = new LinkedHashMap<>();
+        rMap.put("quiz_sort", quiz_sort);
+        rMap.put("quiz_title", quiz_title);
+        rMap.put("quiz_cont", quiz_cont);
+
+        // 컬렉션이 없다면 컬렉션 생성
+        super.createCollection(colNm, "quiz_title");
+
+        MongoCollection<Document> collection = mongodb.getCollection(colNm);
+
+        collection.insertOne(new Document(rMap));
+
+        log.info(this.getClass().getName() + ".insertAdminQuiz end!");
+
+    }
+
+    @Override
+    public int deleteOneAdminQuiz(String colNm, Map<String, Object> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".deleteOneAdminQuiz start!");
+
+        MongoCollection<Document> collection = mongodb.getCollection(colNm);
+
+        DeleteResult deleteResult = collection.deleteMany(new Document(pMap));
+        int res = (int) deleteResult.getDeletedCount();
+
+        log.info(this.getClass().getName() + ".deleteOneAdminQuiz end!");
+
+        return res;
+    }
+
+    @Override
+    public int updateAdminQuiz(String colNm, Map<String, String> pMap) throws Exception {
+
+        log.info(this.getClass().getName() + ".updateAdminQuiz start!");
+
+        String quiz_title = pMap.get("quiz_title");
+        String strQuizList = pMap.get("strQuizList");
+
+        List<String> quiz_cont = Arrays.asList(strQuizList.split(","));
+
+        log.info(this.getClass().getName() + ".quiz_title : " + quiz_title);
+        log.info(this.getClass().getName() + ".strQuizList : " + strQuizList);
+        log.info(this.getClass().getName() + ".quiz_cont : " + quiz_cont);
+
+        MongoCollection<Document> collection = mongodb.getCollection(colNm);
+
+        Document findQuery = new Document();
+        findQuery.append("quiz_title", quiz_title);
+
+        Document updateQuery = new Document();
+        updateQuery.append("quiz_cont", quiz_cont);
+
+        UpdateResult updateResults = collection.updateOne(findQuery, new Document("$set", updateQuery));
+        int res = (int) updateResults.getMatchedCount();
+        log.info("res : " + res);
+        log.info("updateResults : " + updateResults);
+
+        log.info(this.getClass().getName() + ".updateAdminQuiz end!");
 
         return res;
     }

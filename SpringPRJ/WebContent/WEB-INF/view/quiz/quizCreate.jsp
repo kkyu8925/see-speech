@@ -2,6 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
+    String SS_USER_TYPE = CmmUtil.nvl((String) session.getAttribute("SS_USER_TYPE"));
+
     List<String> rUserQuizContList = (List<String>) request.getAttribute("rUserQuizContList");
 
     if (rUserQuizContList == null) {
@@ -32,7 +34,7 @@
             border-color: #1f2b7b;
         }
 
-        .history_button:hover, .history_button:focus {
+        .history_button:hover {
             background-color: #1f2b7b;
             border-color: #1f2b7b;
             color: white;
@@ -43,7 +45,7 @@
             border-color: #4cd3e3;
         }
 
-        .practice_button:hover, .practice_button:focus {
+        .practice_button:hover {
             background-color: #4cd3e3;
             border-color: #4cd3e3;
             color: white;
@@ -54,7 +56,7 @@
             border-color: #f44a40;
         }
 
-        .delete_button:hover, .delete_button:focus {
+        .delete_button:hover {
             background-color: #f44a40;
             border-color: #f44a40;
             color: white;
@@ -93,6 +95,15 @@
             cursor: pointer;
         }
 
+        .formHeader {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .selectBox {
+            height: 30px;
+        }
+
     </style>
 </head>
 
@@ -118,8 +129,18 @@
                 <!-- insert QUiZ form -->
                 <form id="quizForm" method="post" action="${pageContext.request.contextPath}/insertQuiz.do"
                       onsubmit="return submitCreateHandler();">
-                    <input class="form-control valid input_title" name="quiz_title" id="title" type="text"
-                           placeholder="Enter title">
+                    <div class="formHeader">
+                        <input class="form-control valid input_title" name="quiz_title" id="title" type="text"
+                               placeholder="Enter title">
+
+                        <% if (SS_USER_TYPE.equals("ADMIN")) { %>
+                        <select name="quiz_sort" class="selectBox">
+                            <option value="0">단어</option>
+                            <option value="1">문장</option>
+                        </select>
+                        <% } %>
+                    </div>
+
 
                     <!-- quizCreateForm Area Start-->
                     <%@include file="/WEB-INF/view/quiz/inc/quizCreateForm.jsp" %>
@@ -222,6 +243,8 @@
 
         if (_checkQuizList_.includes(_input)) {
             alert("중복인 문제입니다.");
+        } else if ((_input === "") || (_input === null)) {
+            alert("문제를 입력해주세요.")
         } else {
             let root = e.parentNode.parentNode;
             root.querySelector(".country").innerHTML = _input;
@@ -239,7 +262,7 @@
             $("#title").focus();
             return false;
         } else if (quizContList === 0) {
-            alert("문제를 생성해주세요.");
+            alert("문제를 추가해주세요.");
             return false;
         } else {
             // 퀴즈 제목 중복 확인 ajax

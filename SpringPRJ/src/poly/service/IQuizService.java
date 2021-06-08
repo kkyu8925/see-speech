@@ -27,7 +27,16 @@ public interface IQuizService {
 
     // 퀴즈 하나 삭제
     int deleteOneQuiz(Map<String, Object> pMap) throws Exception;
-    
+
     // 퀴즈 업데이트
     int updateUserQuiz(Map<String, String> pMap) throws Exception;
+
+    // 관리자 퀴즈 생성
+    void insertAdminQuiz(Map<String, String> pMap) throws Exception;
+
+    // 관리자 퀴즈 삭제
+    int deleteOneAdminQuiz(Map<String, Object> pMap) throws Exception;
+    
+    // 관리자 퀴즈 업데이터
+    int updateAdminQuiz(Map<String, String> pMap) throws Exception;
 }
