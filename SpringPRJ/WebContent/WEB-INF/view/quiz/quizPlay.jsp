@@ -169,8 +169,9 @@
 
             let _quiz = document.getElementById("quizBox").innerHTML;
             if (_quiz === final_transcript) {
-                $('#right-loader-active').show();
-                $('#right-loader-active').delay(450).fadeOut('slow', function () {
+                let rightLoader = $('#right-loader-active');
+                rightLoader.show();
+                rightLoader.delay(450).fadeOut('slow', function () {
                     nextQuizHandler();
                 });
 
