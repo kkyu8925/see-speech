@@ -113,60 +113,34 @@
     <div class="whole-wrap">
         <div class="container box_1170">
             <div class="section-top-border">
+
                 <% if (quiz_title.equals("")) { %>
+                <!-- insert QUiZ form -->
                 <form id="quizForm" method="post" action="${pageContext.request.contextPath}/insertQuiz.do"
                       onsubmit="return submitCreateHandler();">
                     <input class="form-control valid input_title" name="quiz_title" id="title" type="text"
                            placeholder="Enter title">
-                        <% } else {%>
-                    <form id="quizForm" method="post"
-                          action="${pageContext.request.contextPath}/updateUserQuiz.do?quiz_title=<%=quiz_title%>"
-                          onsubmit="submitUpdateHandler();">
-                        <h3 id="getQuizTitle"></h3>
-                        <% }%>
 
-                        <input id="quizListHiddenInput" name="quizListHiddenInput" type="hidden"/>
+                    <!-- quizCreateForm Area Start-->
+                    <%@include file="/WEB-INF/view/quiz/inc/quizCreateForm.jsp" %>
+                    <!-- quizCreateForm Area end-->
 
-                        <div class="progress-table-wrap">
-                            <div class="progress-table" style="padding-bottom: 15px;">
-                                <div class="table-head">
-                                    <div class="serial">NO</div>
-                                    <div class="country">QUIZ</div>
-                                    <div class="percentage">Button</div>
-                                </div>
+                </form>
+                <% } else {%>
+                <!-- update QUiZ form -->
+                <form id="quizForm" method="post"
+                      action="${pageContext.request.contextPath}/updateUserQuiz.do?quiz_title=<%=quiz_title%>"
+                      onsubmit="submitUpdateHandler();">
+                    <h3 id="getQuizTitle"></h3>
 
-                                <% for (String quizContOne : rUserQuizContList) { %>
+                    <!-- quizCreateForm Area Start-->
+                    <%@include file="/WEB-INF/view/quiz/inc/quizCreateForm.jsp" %>
+                    <!-- quizCreateForm Area end-->
 
-                                <div class="table-row">
-                                    <div class="serial quizContNo"></div>
-                                    <div class="country quizList"><%=quizContOne%></div>
-                                    <div class="percentage">
-                                        <button onclick="updateClickHandler(this)" type="button"
-                                                class="boxed-btn list_button update_button">수정
-                                        </button>
-                                        <button onclick="deleteClickHandler(this)" type="button"
-                                                class="boxed-btn list_button delete_button">삭제
-                                        </button>
-                                    </div>
-                                </div>
+                </form>
+                <% }%>
 
-                                <% } %>
 
-                                <div class="table-row plus_table_row" onclick="createQuizHandler()">
-                                    <div class="serial"></div>
-                                    <div class="country">문제 추가하기</div>
-                                    <div class="percentage">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="table_button_box">
-                            <button type="submit" class="boxed-btn practice_button">저장</button>
-                            <button type="button" class="boxed-btn history_button" onclick="history.back()">이전</button>
-                        </div>
-
-                    </form>
             </div>
 
         </div>
