@@ -3,6 +3,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
+    String SS_USER_TYPE = CmmUtil.nvl((String) session.getAttribute("SS_USER_TYPE"));
+
     List<Map<String, String>> rQuizList = ((List<Map<String, String>>) request.getAttribute("rQuizList"));
     List<String> rUserQuizTitleList = ((List<String>) request.getAttribute("rUserQuizTitleList"));
 
@@ -160,6 +162,15 @@
     <!-- Courses area End -->
     <!-- 문장 학습하기 end -->
 
+    <% if (SS_USER_TYPE.equals("ADMIN")) { %>
+
+    <div class="row justify-content-center">
+        <button class="boxed-btn" style="font-weight: bold;margin-top: 10px;"
+                onclick="location.href='create.do'">생성하기
+        </button>
+    </div>
+
+    <% } else { %>
     <!--? top subjects Area Start -->
     <div class="topic-area section-padding40">
         <div class="container">
@@ -206,6 +217,9 @@
         </div>
     </div>
     <!-- top subjects End -->
+
+    <% } %>
+
 
     <!-- ? services-area -->
     <div class="services-area services-area2 section-padding40">
