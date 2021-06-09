@@ -6,12 +6,14 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import poly.util.CmmUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,9 +33,18 @@ public class ChatController {
     }
 
     @RequestMapping(value = "userChat.do")
-    public String userChat() throws Exception {
+    public String userChat(HttpSession session, ModelMap model) throws Exception {
 
         log.info(this.getClass().getName() + ".userChat start!");
+
+        String user_email = CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL"));
+        log.info("user_email : " + user_email);
+
+        if (user_email.equals("")) {
+            model.addAttribute("msg", "로그인이 필요합니다.");
+            model.addAttribute("url", "/loginPage.do");
+            return "/redirect";
+        }
 
         log.info(this.getClass().getName() + ".userChat end!");
 
@@ -68,6 +79,5 @@ public class ChatController {
 
         return pMap;
     }
-
 
 }
