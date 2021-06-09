@@ -18,93 +18,7 @@
     <%@include file="/WEB-INF/view/inc/head.jsp" %>
     <!-- head end -->
 
-    <style>
-        #table_button_box {
-            display: flex;
-            justify-content: space-around;
-            padding-top: 50px;
-        }
-
-        #table_button_box button {
-            font-weight: bold;
-        }
-
-        .history_button {
-            color: #1f2b7b;
-            border-color: #1f2b7b;
-        }
-
-        .history_button:hover {
-            background-color: #1f2b7b;
-            border-color: #1f2b7b;
-            color: white;
-        }
-
-        .practice_button {
-            color: #4cd3e3;
-            border-color: #4cd3e3;
-        }
-
-        .practice_button:hover {
-            background-color: #4cd3e3;
-            border-color: #4cd3e3;
-            color: white;
-        }
-
-        .delete_button {
-            color: #f44a40;
-            border-color: #f44a40;
-        }
-
-        .delete_button:hover {
-            background-color: #f44a40;
-            border-color: #f44a40;
-            color: white;
-        }
-
-        .list_button {
-            height: 40px;
-            width: 70px;
-            text-align: center;
-            padding: 0;
-        }
-
-        .update_button {
-            margin-right: 30px;
-        }
-
-        .table-row:hover {
-            background-color: bisque;
-        }
-
-        .input_title {
-            margin-bottom: 30px;
-            width: 30%;
-        }
-
-        @media screen and (max-width: 990px) {
-            .input_title {
-                width: 50%;
-            }
-        }
-
-        .plus_table_row {
-            justify-content: center;
-            font-weight: bold;
-            color: mediumorchid;
-            cursor: pointer;
-        }
-
-        .formHeader {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .selectBox {
-            height: 30px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/page/quizCreate.css">
 </head>
 
 <body>
@@ -147,6 +61,7 @@
                     <!-- quizCreateForm Area end-->
 
                 </form>
+
                 <% } else {%>
                 <!-- update QUiZ form -->
                 <form id="quizForm" method="post"
@@ -157,10 +72,8 @@
                     <!-- quizCreateForm Area Start-->
                     <%@include file="/WEB-INF/view/quiz/inc/quizCreateForm.jsp" %>
                     <!-- quizCreateForm Area end-->
-
                 </form>
                 <% }%>
-
 
             </div>
 

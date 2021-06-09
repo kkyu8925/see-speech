@@ -8,40 +8,7 @@
     <%@include file="/WEB-INF/view/inc/head.jsp" %>
     <!-- head end -->
 
-    <style>
-        .form__button {
-            font-weight: bold;
-        }
-
-        .delete_userButton {
-            color: #f44a40;
-            border-color: #f44a40;
-        }
-
-        .delete_userButton:hover {
-            background-color: #f44a40;
-            border-color: #f44a40;
-            color: white;
-        }
-
-        .update_pwButton {
-            color: #4cd3e3;
-            border-color: #4cd3e3;
-            margin-right: 25px;
-        }
-
-        .update_pwButton:hover {
-            background-color: #4cd3e3;
-            border-color: #4cd3e3;
-            color: white;
-        }
-
-        .userInfo_buttonBox {
-            display: flex;
-            justify-content: flex-start;
-            padding-top: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/page/userPage.css">
 </head>
 
 <body>

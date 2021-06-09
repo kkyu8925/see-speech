@@ -54,7 +54,6 @@
                 <% } else { %>
                 location.href = "/deleteOneQuiz.do?quiz_title=" + quiz_title;
                 <% } %>
-
             }
         }
     </script>

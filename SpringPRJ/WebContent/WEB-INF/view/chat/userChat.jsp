@@ -9,61 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/chatcore.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/chatstyle.css">
 
-    <style>
-        .chat_head_box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .chat_head_box i {
-            padding-right: 20px;
-        }
-
-        .chat-footer i {
-            color: blue;
-            cursor: pointer;
-        }
-
-        .chat-footer {
-            position: relative;
-        }
-
-        #micButtonBox {
-            position: relative;
-            top: 15%;
-            left: 47%;
-        }
-
-        @media only screen and (min-width: 426px) and (max-width: 576px) {
-            #micButtonBox {
-                left: 43%;
-            }
-        }
-
-        @media only screen and (min-width: 400px) and (max-width: 425px) {
-            #micButtonBox {
-                left: 41%;
-            }
-        }
-
-        @media only screen and (min-width: 300px) and (max-width: 399px) {
-            #micButtonBox {
-                left: 39%;
-            }
-        }
-
-        .user_come_msg_container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .user_come_msg_div {
-            font-size: 20px;
-            color: darkgray;
-        }
-
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/page/userChat.css">
 </head>
 
 <body>
@@ -197,7 +143,7 @@
         let resHTML = "";
         resHTML += '<li class="clearfix">';
         resHTML += '<span class="chat-img">';
-        resHTML += '<img src="${pageContext.request.contextPath}/resources/img/chat/basicuser.png">';
+        resHTML += '<img src="${pageContext.request.contextPath}/resources/img/chat/basicUser.png">';
         resHTML += '</span>';
         resHTML += '<div class="chat-body clearfix">';
         resHTML += '<p>' + text + '</p>';

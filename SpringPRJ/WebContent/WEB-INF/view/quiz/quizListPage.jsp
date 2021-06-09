@@ -14,56 +14,8 @@
     <%@include file="/WEB-INF/view/inc/head.jsp" %>
     <!-- head end -->
 
-    <style>
-        #table_button_box {
-            display: flex;
-            justify-content: space-around;
-            padding-bottom: 50px;
-        }
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/page/quizListPage.css">
 
-        #table_button_box button {
-            font-weight: bold;
-        }
-
-        .history_button {
-            color: #1f2b7b;
-            border-color: #1f2b7b;
-        }
-
-        .history_button:hover, .history_button:focus {
-            background-color: #1f2b7b;
-            border-color: #1f2b7b;
-            color: white;
-        }
-
-        .practice_button {
-            color: #4cd3e3;
-            border-color: #4cd3e3;
-        }
-
-        .practice_button:hover, .practice_button:focus {
-            background-color: #4cd3e3;
-            border-color: #4cd3e3;
-            color: white;
-        }
-
-        .table-row {
-            cursor: pointer;
-        }
-
-        .table-row:hover {
-            background-color: bisque;
-        }
-        .progress-table .number {
-            width: 30%;
-        }
-        .progress-table .quiz {
-            width: 70%;
-        }
-        .container {
-            max-width: 800px;
-        }
-    </style>
     <script type="text/javascript">
         function onePracticeHandler(e) {
             let quizContTitle = e.innerText;
