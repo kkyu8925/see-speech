@@ -20,7 +20,7 @@
 - 심심이와의 음성채팅, 다른 사용자와의 음성채팅을 할 수 있습니다.
 
 ## 담당한 기능
-- Bootstrap을 활용해 Front 개발
+- Bootstrap Template을 활용해 Front 개발
 - Annyang.js를 활용해 STT(Speech-To-Text) 기능 구현
 - 회원가입, 로그인 기능 구현
 - 퀴즈  CRUD 기능 구현
