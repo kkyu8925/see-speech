@@ -12,11 +12,11 @@
            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- @RequestMapping 매핑 -->
-    <mvc:annotation-driven/>
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+<!--    <mvc:annotation-driven/>-->
+<!--    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>-->
 
     <!-- @component : @controller, @Service, @Repository 포함 -->
-    <!-- <context:annotation-config />는 @autowired 설정, component-scan 사용시에는 포함-->
+    <!-- <context:annotation-config />는 @autowired 설정, component-scan 에 포함되어 있다.-->
     <context:component-scan base-package="poly.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
