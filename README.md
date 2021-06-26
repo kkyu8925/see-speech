@@ -31,5 +31,6 @@
 - MongoDB 설계, 운영
 
 ### 시연영상 URL
-예정
+> https://youtu.be/EX5BvOYi_bM
+
 
