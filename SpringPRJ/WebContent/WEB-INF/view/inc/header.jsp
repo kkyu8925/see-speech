@@ -24,6 +24,7 @@
                                         <ul id="navigation">
                                             <li class="active"><a href="index.do">Home</a></li>
                                             <li class="active"><a href="userPage.do">User</a></li>
+                                            <li class="active"><a href="rank.do">Rank</a></li>
                                             <!-- Button -->
                                             <% if (SS_USER_EMAIL.equals("")) { %>
                                             <li class="button-header"><a href="loginPage.do" class="btn btn3">Log in</a>

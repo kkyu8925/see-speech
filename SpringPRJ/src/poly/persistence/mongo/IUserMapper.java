@@ -1,5 +1,6 @@
 package poly.persistence.mongo;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IUserMapper {
@@ -17,4 +18,8 @@ public interface IUserMapper {
 
     // 유저 정보 삭제
     int deleteUser(String colNm, Map<String, Object> pMap) throws Exception;
+
+    int saveUserRate(String colNm, Map<String, Object> pMap) throws Exception;
+
+    List<Map<String, String>> getUserList(String colNm) throws Exception;
 }

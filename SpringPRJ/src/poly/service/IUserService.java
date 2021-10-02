@@ -1,5 +1,6 @@
 package poly.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IUserService {
@@ -17,4 +18,8 @@ public interface IUserService {
 
     // 유저 정보 삭제
     int deleteUser(Map<String, Object> pMap) throws Exception;
+
+    int saveUserRate(Map<String, Object> pMap) throws Exception;
+
+    List<Map<String, String>> getUserList() throws Exception;
 }

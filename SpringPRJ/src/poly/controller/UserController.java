@@ -2,6 +2,7 @@ package poly.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -32,6 +34,51 @@ public class UserController {
 
     @Resource(name = "MailService")
     private IMailService mailService;
+
+    @RequestMapping(value = "rank.do")
+    public String rank(Model model) throws Exception {
+
+        log.info(this.getClass().getName() + ".rank start");
+
+        List<Map<String, String>> rList = userService.getUserList();
+
+        for (Map<String, String> stringStringMap : rList) {
+            System.out.println("stringStringMap = " + stringStringMap);
+        }
+
+        model.addAttribute("rList", rList);
+
+        log.info(this.getClass().getName() + ".rank end");
+
+        return "/user/rank";
+    }
+
+    @RequestMapping(value = "saveUserRate")
+    @ResponseBody
+    public String saveUserRate(HttpServletRequest request, HttpSession session) throws Exception {
+
+        String user_email = EncryptUtil.encAES128CBC(CmmUtil.nvl((String) session.getAttribute("SS_USER_EMAIL")));
+        String user_name = CmmUtil.nvl((String) session.getAttribute("SS_USER_NAME"));
+
+        int user_tmpCNT = Integer.parseInt(request.getParameter("user_tmpCNT"));
+        int user_wrongCNT = Integer.parseInt(request.getParameter("user_wrongCNT"));
+        int user_rate = Integer.parseInt(request.getParameter("user_rate"));
+        log.info("user_tmpCNT : " + user_tmpCNT);
+        log.info("user_wrongCNT : " + user_wrongCNT);
+        log.info("user_rate : " + user_rate);
+
+        Map<String, Object> pMap = new HashMap<>();
+        pMap.put("user_tmpCNT", user_tmpCNT);
+        pMap.put("user_wrongCNT", user_wrongCNT);
+        pMap.put("user_rate", user_rate);
+        pMap.put("user_email", user_email);
+        pMap.put("user_name", user_name);
+
+        int res = userService.saveUserRate(pMap);
+        System.out.println("res = " + res);
+
+        return "ok";
+    }
 
     @RequestMapping(value = "findPwPage.do")
     public String findPwPage() throws Exception {
@@ -122,6 +169,9 @@ public class UserController {
             pMap.put("user_email", user_email);
             pMap.put("user_name", user_name);
             pMap.put("user_pw", user_pw);
+            pMap.put("user_tmpCNT", 0);
+            pMap.put("user_wrongCNT", 0);
+            pMap.put("user_rate", 0);
 
             userService.insertUser(pMap);
 

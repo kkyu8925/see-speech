@@ -198,6 +198,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="chatBox col-lg-4 col-md-6 col-sm-8">
+                    <div class="single-services mb-30 cursor_pointer apiButton" onclick="location.href='/'">
+                        <div class="features-icon">
+                            <img src="${pageContext.request.contextPath}/resources/img/icon/icon1.svg" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <h3>단어 끝말잇기</h3>
+                            <p>재밌는 게임 해요~</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

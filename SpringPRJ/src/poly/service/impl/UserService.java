@@ -6,6 +6,7 @@ import poly.persistence.mongo.IUserMapper;
 import poly.service.IUserService;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @Service("UserService")
@@ -77,4 +78,15 @@ public class UserService implements IUserService {
 
         return res;
     }
+
+    @Override
+    public int saveUserRate(Map<String, Object> pMap) throws Exception {
+        return userMapper.saveUserRate(colNm, pMap);
+    }
+
+    @Override
+    public List<Map<String, String>> getUserList() throws Exception {
+        return userMapper.getUserList(colNm);
+    }
+
 }

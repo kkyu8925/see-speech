@@ -101,6 +101,9 @@
 <script src="${pageContext.request.contextPath}/resources/js/annyang.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/speechkitt.js"></script>
 <script>
+    let WRONG_CNT = 0;
+    let TMP_CNT = 0;
+
     if (annyang) {
         // Add our commands to annyang
         annyang.addCommands({});
@@ -130,8 +133,12 @@
                 rightLoader.delay(450).fadeOut('slow', function () {
                     nextQuizHandler();
                 });
-
+            } else {
+                WRONG_CNT++;
             }
+            TMP_CNT++;
+
+            saveUserRate();
         };
 
         // Tell KITT to use annyang
@@ -143,6 +150,23 @@
         // Render KITT's interface
         SpeechKITT.vroom();
     }
+
+    function saveUserRate() {
+        $.ajax({
+            url: "/saveUserRate.do",
+            type: "get",
+            dataType: "JSON",
+            data: {
+                "user_tmpCNT": TMP_CNT,
+                "user_wrongCNT": WRONG_CNT,
+                "user_rate": Math.round((TMP_CNT - WRONG_CNT) / TMP_CNT * 100),
+            },
+            success: function () {
+                console.log("saveUserRate success")
+            }
+        })
+    }
+
 
     // make js quiz list
     let quizContList = [];
@@ -174,7 +198,6 @@
             // 답장 div 비우기
             document.querySelector("#sttBox").innerHTML = "";
         }
-
     }
 </script>
 
