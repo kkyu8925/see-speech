@@ -26,6 +26,11 @@ public class QuizController {
     @Resource(name = "QuizService")
     private IQuizService quizService;
 
+    @RequestMapping(value = "wordGame.do")
+    public String wordGame() throws Exception {
+        return "/quiz/wordGame";
+    }
+
     @RequestMapping(value = "index.do")
     public String index(ModelMap model, HttpSession session) throws Exception {
 
