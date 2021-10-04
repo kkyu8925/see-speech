@@ -39,4 +39,6 @@ public interface IQuizService {
     
     // 관리자 퀴즈 업데이터
     int updateAdminQuiz(Map<String, String> pMap) throws Exception;
+
+    List<String> getToDayQuiz() throws Exception;
 }

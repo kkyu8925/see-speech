@@ -111,6 +111,13 @@
         </dependency>
         <!-- 스프링 프레임워크 필수 라이브들 설정 끝! -->
 
+        <!-- 웹 크로링 jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.12.1</version>
+        </dependency>
+
         <!-- RequestBody 사용시, JSON 변환이 안되는 경우 추가함 -->
         <dependency>
             <groupId>com.google.code.gson</groupId>

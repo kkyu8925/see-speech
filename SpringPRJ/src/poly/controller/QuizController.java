@@ -26,6 +26,21 @@ public class QuizController {
     @Resource(name = "QuizService")
     private IQuizService quizService;
 
+    @RequestMapping(value = "toDayQuiz.do")
+    public String getToDayQuiz(HttpSession session, ModelMap model) throws Exception {
+
+        log.info(this.getClass().getName() + ".toDayQuiz start!");
+
+        List<String> rQuizContList = quizService.getToDayQuiz();
+        session.setAttribute("SS_QUIZ_CONT_LIST", rQuizContList);
+
+        model.addAttribute("quizContTitle", "오늘의 단어");
+
+        log.info(this.getClass().getName() + ".toDayQuiz end!");
+
+        return "/quiz/quizListPage";
+    }
+
     @RequestMapping(value = "wordGame.do")
     public String wordGame() throws Exception {
         return "/quiz/wordGame";

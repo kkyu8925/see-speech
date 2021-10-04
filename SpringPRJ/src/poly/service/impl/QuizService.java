@@ -1,12 +1,17 @@
 package poly.service.impl;
 
 import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import poly.persistence.mongo.IQuizMapper;
 import poly.service.IQuizService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -178,5 +183,26 @@ public class QuizService implements IQuizService {
         log.info(this.getClass().getName() + ".updateAdminQuiz end!");
 
         return res;
+    }
+
+    @Override
+    public List<String> getToDayQuiz() throws Exception {
+
+        List<String> rList = new ArrayList<>();
+
+        String url = "https://issue.zum.com/";
+
+        // JSOUP 라이브러리를 통해 사이트 접속되면, 그사이트의 전체 HTML소스 저장할 변수
+        Document doc = null;
+
+        doc = Jsoup.connect(url).get();
+
+        Elements element = doc.select("div.as_is");
+
+        for (Element value : element.select("span.word")) {
+            rList.add(value.text());
+        }
+        
+        return rList;
     }
 }

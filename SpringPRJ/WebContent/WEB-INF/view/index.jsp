@@ -53,6 +53,23 @@
             </div>
             <div class="courses-actives">
 
+                <div class="properties pb-20">
+                    <div class="properties__card">
+                        <div class="properties__img overlay1">
+                            <img src="${pageContext.request.contextPath}/resources/img/gallery/featured1.png"
+                                 alt="">
+                        </div>
+                        <div class="properties__caption">
+                            <h3>오늘의 단어
+                            </h3>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                            </div>
+                            <a href="toDayQuiz.do"
+                               class="border-btn border-btn2 cursor_pointer">학습하기</a>
+                        </div>
+                    </div>
+                </div>
+
                 <%
                     int i = 0;
                     for (Map<String, String> rMap : rQuizList) {
