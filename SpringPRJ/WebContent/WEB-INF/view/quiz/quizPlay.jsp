@@ -16,6 +16,12 @@
     <!-- head end -->
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/page/quizPlay.css">
+
+    <style>
+        b {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,7 +69,7 @@
                     <div class="single-services mb-30">
                         <div class="features-caption">
                             <h3>See</h3>
-                            <p id="sttBox"></p>
+                            <div id="sttBox"></div>
                         </div>
                     </div>
                 </div>
@@ -124,21 +130,40 @@
             }
             final_transcript = final_transcript.trim();
             console.log("final :" + final_transcript);
-            $("#sttBox").text(final_transcript);
+            // $("#sttBox").text(final_transcript);
 
             let _quiz = document.getElementById("quizBox").innerHTML;
             if (_quiz === final_transcript) {
+                $("#sttBox").text(final_transcript);
                 let rightLoader = $('#right-loader-active');
                 rightLoader.show();
                 rightLoader.delay(450).fadeOut('slow', function () {
                     nextQuizHandler();
                 });
             } else {
+                let resHTML = "";
+                let i;
+                for (i = 0; i < _quiz.length; i++) {
+                    if (_quiz.charAt(i) === final_transcript.charAt(i)) {
+                        resHTML += final_transcript.charAt(i)
+                    } else {
+                        resHTML += '<b>' + final_transcript.charAt(i) + '</b>'
+                    }
+                }
+
+                while (i < final_transcript.length) {
+                    resHTML += '<b>' + final_transcript.charAt(i) + '</b>'
+                    i++;
+                }
+                console.log("resHTML : " + resHTML)
+                $("#sttBox").html(resHTML);
                 WRONG_CNT++;
             }
             TMP_CNT++;
 
-            saveUserRate();
+            if ('${SS_USER_EMAIL}'.length != 0) {
+                saveUserRate();
+            }
         };
 
         // Tell KITT to use annyang
