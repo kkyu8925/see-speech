@@ -119,7 +119,12 @@
                 let resHTML = '<li class="user_come_msg_container"><div class="user_come_msg_div">' + msgText + '</div</li>';
                 $("#chat__ul").append(resHTML);
             } else {
-                writeResponse(msg);
+                let msg_list = msg.split(":")
+                let user_email = msg_list[0]
+                let result_msg = msg_list[1]
+                if (user_email !== '${SS_USER_EMAIL}') {
+                    writeResponse(result_msg);
+                }
             }
         };
         ws.onclose = function (event) {
@@ -194,7 +199,8 @@
             resHTML += '</li>';
             $("#chat__ul").append(resHTML);
 
-            send(final_transcript);
+            let send_msg = '${SS_USER_EMAIL}' + ":" + final_transcript;
+            send(send_msg);
         };
 
         // Tell KITT to use annyang
