@@ -19,6 +19,8 @@
 ![image](https://user-images.githubusercontent.com/64997245/147046420-cf3f09eb-9de4-41f7-b690-0481648eff17.png)
   
 ## 설명  
+![image](https://user-images.githubusercontent.com/64997245/147189156-d4743180-0bcf-4f9b-9289-d7dc73508ae5.png)
+
 - 사용자의 음성을 STT(Speech-To-Text)를 활용해 시각적으로 분석, 교정하는 애플리케이션입니다.
 - 단어, 문장 또는 자신이 만든 퀴즈로 학습을 진행할 수 있습니다. 
 - 심심이와의 음성채팅, 다른 사용자와의 음성채팅을 할 수 있습니다.
